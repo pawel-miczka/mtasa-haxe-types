@@ -186,9 +186,11 @@ extern class Functions {
 	/**
 		This function retrieves the IP address of an account.
 
+		@param theAccount The account you wish to get the IP of
+
 		@see https://wiki.mtasa.com/wiki/GetAccountIP
 	**/
-	static function getAccountIP():Void
+	static function getAccountIP(theAccount:Account):Void
 
 	/**
 		This function returns a table containing all accounts with specified dataName and value (set with setAccountData).
