@@ -28,9 +28,13 @@ extern class Functions {
 	/**
 		This function returns an account for a specific user.
 
+		@param username The username of the account you want to retrieve
+		@param password The password for the account. If this argument is not specified, you can get the account whatever password it is, otherwise the password must match the account's.
+		@param caseSensitive Specifies whether to ignore the case when searching for an account.
+
 		@see https://wiki.mtasa.com/wiki/GetAccount
 	**/
-	static function getAccount():Void
+	static function getAccount(username:String, ?password:String, ?caseSensitive:Bool = true):Void
 
 	/**
 		This function retrieves a string that has been stored using setAccountData. Data stored as account data is persistent across user's sessions and maps, unless they are logged into a guest account.
