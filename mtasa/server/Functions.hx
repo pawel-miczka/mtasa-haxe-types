@@ -149,9 +149,13 @@ extern class Functions {
 	/**
 		This function sets a string to be stored in an account. This can then be retrieved using getAccountData. Data stored as account data is persistent across user's sessions and maps, unless they are logged into a guest account. Even if logged into a guest account, account data can be useful as a way to store a reference to your own account system, though it's persistence is equivalent to that of using setElementData on the player's element.
 
+		@param theAccount The account you wish to retrieve the data from
+		@param key The key under which you wish to store the data
+		@param value The value you wish to store. Set to false to remove the data. NOTE: you cannot store tables as values, but you can use toJSON strings
+
 		@see https://wiki.mtasa.com/wiki/SetAccountData
 	**/
-	static function setAccountData():Void
+	static function setAccountData(theAccount:Account, key:String, value:String):Bool
 
 	/**
 		This function sets the password of the specified account.
