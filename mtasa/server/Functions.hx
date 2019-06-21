@@ -79,7 +79,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/GetAccounts
 	**/
-	static function getAccounts():Void
+	static function getAccounts():Array<Account>
 
 	/**
 		This function returns a table containing all accounts that were logged onto from specified serial. If the serial is empty string, it will return all accounts that were never logged onto.
