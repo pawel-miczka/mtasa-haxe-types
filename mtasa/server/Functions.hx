@@ -1,6 +1,7 @@
 package mtasa.server;
 
 import mtasa.server.Account;
+import mtasa.server.Player;
 
 @:native("_G")
 extern class Functions {
@@ -34,7 +35,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/GetAccount
 	**/
-	static function getAccount(username:String, ?password:String, ?caseSensitive:Bool = true):Void
+	static function getAccount(username:String, ?password:String, ?caseSensitive:Bool = true):Account
 
 	/**
 		This function retrieves a string that has been stored using setAccountData. Data stored as account data is persistent across user's sessions and maps, unless they are logged into a guest account.
@@ -44,7 +45,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/GetAccountData
 	**/
-	static function getAccountData(theAccount:Account, key:String):Void
+	static function getAccountData(theAccount:Account, key:String):String
 
 	/**
 		This function retrieves the name of an account.
@@ -53,7 +54,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/GetAccountName
 	**/
-	static function getAccountName(theAccount:Account):Void
+	static function getAccountName(theAccount:Account):String
 
 	/**
 		This function returns the player element that is currently using a specified account, i.e. is logged into it. Only one player can use an account at a time.
@@ -62,7 +63,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/GetAccountPlayer
 	**/
-	static function getAccountPlayer(account:Account):Void
+	static function getAccountPlayer(account:Account):Player
 
 	/**
 		This function returns the last serial that logged onto the specified account.
@@ -71,7 +72,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/GetAccountSerial
 	**/
-	static function getAccountSerial(theAccount:Account):Void
+	static function getAccountSerial(theAccount:Account):String
 
 	/**
 		This function returns a table over all the accounts that exist in the server internal.db file. (Note: accounts.xml is no longer used after version 1.0.4)
