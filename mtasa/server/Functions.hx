@@ -67,9 +67,11 @@ extern class Functions {
 	/**
 		This function returns the last serial that logged onto the specified account.
 
+		@param theAccount The account to get serial from		
+
 		@see https://wiki.mtasa.com/wiki/GetAccountSerial
 	**/
-	static function getAccountSerial():Void
+	static function getAccountSerial(theAccount:Account):Void
 
 	/**
 		This function returns a table over all the accounts that exist in the server internal.db file. (Note: accounts.xml is no longer used after version 1.0.4)
