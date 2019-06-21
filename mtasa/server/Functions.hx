@@ -214,9 +214,13 @@ extern class Functions {
 	/**
 		This function sets the name of an account.
 
+		@param theAccount The account you wish to change the name
+		@param name The new name
+		@param allowCaseVariations Whether the username is case sensitive (if this is set to true, usernames "Bob" and "bob" will refer to different accounts)
+
 		@see https://wiki.mtasa.com/wiki/SetAccountName
 	**/
-	static function setAccountName():Void
+	static function setAccountName(theAccount:Account, name:String, ?allowCaseVariations:Bool = false):String
 
 	/**
 		This function creates an ACL entry in the Access Control List system with the specified name.
