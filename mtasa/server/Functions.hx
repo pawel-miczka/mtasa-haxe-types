@@ -39,9 +39,12 @@ extern class Functions {
 	/**
 		This function retrieves a string that has been stored using setAccountData. Data stored as account data is persistent across user's sessions and maps, unless they are logged into a guest account.
 
+		@param theAccount The account you wish to retrieve the data from.
+		@param key The key under which the data is stored
+
 		@see https://wiki.mtasa.com/wiki/GetAccountData
 	**/
-	static function getAccountData():Void
+	static function getAccountData(account:Account, key:String):Void
 
 	/**
 		This function retrieves the name of an account.
