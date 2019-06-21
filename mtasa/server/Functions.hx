@@ -174,14 +174,14 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/GetAccountByID
 	**/
-	static function getAccountByID(id:Int):Void
+	static function getAccountByID(id:Int):Account
 
 	/**
 		This function retrieves the ID of an account.
 
 		@see https://wiki.mtasa.com/wiki/GetAccountID
 	**/
-	static function getAccountID():Void
+	static function getAccountID(theAccount:Account):Account
 
 	/**
 		This function retrieves the IP address of an account.
