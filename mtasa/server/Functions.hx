@@ -120,9 +120,13 @@ extern class Functions {
 	/**
 		This functions logs the given player in to the given account. You need to provide the password needed to log into that account.
 
+		@param thePlayer The player to log into an account
+		@param theAccount The account to log the player into
+		@param thePassword The password needed to sign into this account
+		
 		@see https://wiki.mtasa.com/wiki/LogIn
 	**/
-	static function logIn():Void
+	static function logIn(thePlayer:Player, theAccount:Account, thePassword:String):Bool
 
 	/**
 		This function logs the given player out of his current account.
