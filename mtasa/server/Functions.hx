@@ -102,9 +102,11 @@ extern class Functions {
 	/**
 		This function returns the specified player's account object.
 
+		@param thePlayer The player element you want to get the account of.
+
 		@see https://wiki.mtasa.com/wiki/GetPlayerAccount
 	**/
-	static function getPlayerAccount():Void
+	static function getPlayerAccount(thePlayer:Player):Account
 
 	/**
 		This function checks to see if an account is a guest account. A guest account is an account automatically created for a user when they join the server and deleted when they quit or login to another account. Data stored in a guest account is not stored after the player has left the server. As a consequence, this function will check if a player is logged in or not.
