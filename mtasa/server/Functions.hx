@@ -190,14 +190,17 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/GetAccountIP
 	**/
-	static function getAccountIP(theAccount:Account):Void
+	static function getAccountIP(theAccount:Account):String
 
 	/**
 		This function returns a table containing all accounts with specified dataName and value (set with setAccountData).
 
+		@param dataName The name of the data
+		@param value The value the dataName should have
+
 		@see https://wiki.mtasa.com/wiki/GetAccountsByData
 	**/
-	static function getAccountsByData():Void
+	static function getAccountsByData(dataName:String, value:String):Array<String>
 
 	/**
 		This function returns a table containing all accounts that were logged onto from specified IP-address.
