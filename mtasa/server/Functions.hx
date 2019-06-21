@@ -140,9 +140,11 @@ extern class Functions {
 	/**
 		This function is used to delete existing player accounts.
 
+		@param theAccount The account you wish to remove
+
 		@see https://wiki.mtasa.com/wiki/RemoveAccount
 	**/
-	static function removeAccount():Void
+	static function removeAccount(theAccount:Account):Void
 
 	/**
 		This function sets a string to be stored in an account. This can then be retrieved using getAccountData. Data stored as account data is persistent across user's sessions and maps, unless they are logged into a guest account. Even if logged into a guest account, account data can be useful as a way to store a reference to your own account system, though it's persistence is equivalent to that of using setElementData on the player's element.
