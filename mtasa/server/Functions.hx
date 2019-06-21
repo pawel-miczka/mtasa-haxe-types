@@ -200,14 +200,16 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/GetAccountsByData
 	**/
-	static function getAccountsByData(dataName:String, value:String):Array<String>
+	static function getAccountsByData(dataName:String, value:String):Array<Account>
 
 	/**
 		This function returns a table containing all accounts that were logged onto from specified IP-address.
 
+		@param ip The IP to get accounts from
+
 		@see https://wiki.mtasa.com/wiki/GetAccountsByIP
 	**/
-	static function getAccountsByIP():Void
+	static function getAccountsByIP(ip:String):Array<Account>
 
 	/**
 		This function sets the name of an account.
