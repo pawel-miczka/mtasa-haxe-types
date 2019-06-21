@@ -18,9 +18,12 @@ extern class Functions {
 	/**
 		This function copies all of the data from one account to another.
 
+		@param theAccount The account you wish to copy the data to.
+		@param fromAccount The account you wish to copy the data from.
+
 		@see https://wiki.mtasa.com/wiki/CopyAccountData
 	**/
-	static function copyAccountData():Void
+	static function copyAccountData(account:Account, fromAccount:Account):Bool
 
 	/**
 		This function returns an account for a specific user.
