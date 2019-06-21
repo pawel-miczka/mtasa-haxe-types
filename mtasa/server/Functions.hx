@@ -170,9 +170,11 @@ extern class Functions {
 	/**
 		This function returns the account with the specific ID.
 
+		@param id The ID to get account from
+
 		@see https://wiki.mtasa.com/wiki/GetAccountByID
 	**/
-	static function getAccountByID():Void
+	static function getAccountByID(id:Int):Void
 
 	/**
 		This function retrieves the ID of an account.
