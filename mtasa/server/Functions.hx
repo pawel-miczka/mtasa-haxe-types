@@ -111,9 +111,11 @@ extern class Functions {
 	/**
 		This function checks to see if an account is a guest account. A guest account is an account automatically created for a user when they join the server and deleted when they quit or login to another account. Data stored in a guest account is not stored after the player has left the server. As a consequence, this function will check if a player is logged in or not.
 
+		@param theAccount The account you want to check to see if it is a guest account.
+
 		@see https://wiki.mtasa.com/wiki/IsGuestAccount
 	**/
-	static function isGuestAccount():Void
+	static function isGuestAccount(theAccount:Account):Void
 
 	/**
 		This functions logs the given player in to the given account. You need to provide the password needed to log into that account.
