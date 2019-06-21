@@ -1,13 +1,19 @@
 package mtasa.server;
 
+import mtasa.server.Account;
+
 @:native("_G")
 extern class Functions {
 	/**
-		This function adds an account to the list of registered accounts of the current server.
+		This function adds an **account** to the list of registered accounts of the current server.
+
+		@param name The name of the account you wish to make, this normally is the player's name.
+		@param pass The password to set for this account for future logins.
+		@param allowCaseVariations Whether the username is case sensitive (if this is set to true, usernames "Bob" and "bob" will refer to different accounts)
 
 		@see https://wiki.mtasa.com/wiki/AddAccount
 	**/
-	static function addAccount():Void
+	static function addAccount(name:String, pass:String, ?allowCaseVariations:Bool = false):Account
 
 	/**
 		This function copies all of the data from one account to another.
