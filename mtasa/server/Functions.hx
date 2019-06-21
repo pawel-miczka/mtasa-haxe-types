@@ -93,9 +93,11 @@ extern class Functions {
 	/**
 		This function returns a table containing all the user data for the account provided
 
+		@param theAccount The account you wish to retrieve all data from.
+
 		@see https://wiki.mtasa.com/wiki/GetAllAccountData
 	**/
-	static function getAllAccountData():Void
+	static function getAllAccountData(theAccount:Account):Array<String>
 
 	/**
 		This function returns the specified player's account object.
