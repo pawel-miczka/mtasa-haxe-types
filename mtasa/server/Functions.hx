@@ -84,9 +84,11 @@ extern class Functions {
 	/**
 		This function returns a table containing all accounts that were logged onto from specified serial. If the serial is empty string, it will return all accounts that were never logged onto.
 
+		@param serial The serial to get accounts from
+
 		@see https://wiki.mtasa.com/wiki/GetAccountsBySerial
 	**/
-	static function getAccountsBySerial():Void
+	static function getAccountsBySerial(serial:String):Array<Account>
 
 	/**
 		This function returns a table containing all the user data for the account provided
