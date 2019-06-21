@@ -160,9 +160,12 @@ extern class Functions {
 	/**
 		This function sets the password of the specified account.
 
+		@param theAccount the account whose password you want to set
+		@param password the password
+
 		@see https://wiki.mtasa.com/wiki/SetAccountPassword
 	**/
-	static function setAccountPassword():Void
+	static function setAccountPassword(theAccount:Account, password:String):Bool
 
 	/**
 		This function returns the account with the specific ID.
