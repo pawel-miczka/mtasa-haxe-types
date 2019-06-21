@@ -123,7 +123,7 @@ extern class Functions {
 		@param thePlayer The player to log into an account
 		@param theAccount The account to log the player into
 		@param thePassword The password needed to sign into this account
-		
+
 		@see https://wiki.mtasa.com/wiki/LogIn
 	**/
 	static function logIn(thePlayer:Player, theAccount:Account, thePassword:String):Bool
@@ -131,9 +131,11 @@ extern class Functions {
 	/**
 		This function logs the given player out of his current account.
 
+		@param thePlayer The player to log out of his current account
+
 		@see https://wiki.mtasa.com/wiki/LogOut
 	**/
-	static function logOut():Void
+	static function logOut(thePlayer:Player):Void
 
 	/**
 		This function is used to delete existing player accounts.
