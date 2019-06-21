@@ -135,7 +135,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/LogOut
 	**/
-	static function logOut(thePlayer:Player):Void
+	static function logOut(thePlayer:Player):Bool
 
 	/**
 		This function is used to delete existing player accounts.
@@ -144,7 +144,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/RemoveAccount
 	**/
-	static function removeAccount(theAccount:Account):Void
+	static function removeAccount(theAccount:Account):Bool
 
 	/**
 		This function sets a string to be stored in an account. This can then be retrieved using getAccountData. Data stored as account data is persistent across user's sessions and maps, unless they are logged into a guest account. Even if logged into a guest account, account data can be useful as a way to store a reference to your own account system, though it's persistence is equivalent to that of using setElementData on the player's element.
