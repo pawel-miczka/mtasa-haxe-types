@@ -529,9 +529,12 @@ extern class Functions {
 	/**
 		This function plays a frontend sound for the specified player.
 
+		@param thePlayer the player you want the sound to play for.
+		@param sound a whole int specifying the sound id to play.
+
 		@see https://wiki.mtasa.com/wiki/PlaySoundFrontEnd
 	**/
-	static function playSoundFrontEnd():Void
+	static function playSoundFrontEnd(thePlayer:Player, sound:Int):Bool
 
 	/**
 		This function retrieves the current gametype as set by setGameType. The game type is displayed in the server browser next to the server's name.Returns the gametype as a string. If no gametype is set it returns nil.
