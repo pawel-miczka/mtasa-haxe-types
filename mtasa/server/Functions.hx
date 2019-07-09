@@ -1,12 +1,6 @@
 package mtasa.server;
 
 import haxe.extern.Rest;
-import mtasa.server.Element;
-import mtasa.server.QueryHandle;
-import mtasa.server.DatabaseConnection;
-import mtasa.server.Player;
-import mtasa.server.Account;
-import mtasa.server.Blip;
 
 @:native("_G")
 extern class Functions {
@@ -3699,7 +3693,7 @@ Added server-side.Returns a single value representing the color.
 
 		@see https://wiki.mtasa.com/wiki/UtfSeek
 	**/
-	static function utfSeek():Void;
+	static function utfSeek():Element;
 
 	/**
 		The function returns a sub string, from the specified positions on a character.Returns a string if the function was successful, false otherwise.
