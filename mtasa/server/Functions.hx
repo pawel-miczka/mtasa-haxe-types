@@ -757,7 +757,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/FadeCamera
 	**/
-	static function fadeCamera():Void;
+	static function fadeCamera(player:Player, fadeIn:Bool, ?timeToFade:Float, ?red:Int, ?green:Int, ?blue:Int):Bool;
 
 	/**
 		Returns the interior of the local camera (independent of the interior of the local player).
