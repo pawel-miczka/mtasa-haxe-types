@@ -799,7 +799,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/SetCameraTarget
 	**/
-	static function setCameraTarget():Void;
+	static function setCameraTarget(player:Player, ?target:Player):Bool;
 
 	/**
 		This function is used to get the name of a body part on a player.
