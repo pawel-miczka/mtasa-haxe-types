@@ -2591,7 +2591,7 @@ As an example this can be used to change the "score" value which will be shown a
 
 		@see https://wiki.mtasa.com/wiki/SpawnPlayer
 	**/
-	static function spawnPlayer():Void;
+	static function spawnPlayer(player:Player, x:Float, y:Float, z:Float, ?rotation:Int = 0, ?skinID:Int = 0, ?interior:Int = 0, ?dimension:Int = 0):Bool;
 
 	/**
 		This function subtracts money from a player's current money amount.
