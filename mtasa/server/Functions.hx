@@ -1882,7 +1882,7 @@ Note: You cannot use "check", "list" or "test" as a command name.
 
 		@see https://wiki.mtasa.com/wiki/OutputChatBox
 	**/
-	static function outputChatBox():Void;
+	static function outputChatBox(text:String, ?visibleTo:Element, ?r:Int = 231, ?g:Int = 217, ?b:Int = 176, ?colorCoded:Bool = false):Bool;
 
 	/**
 		This outputs the specified text string to the console window (accessed with F8 or ~ key). It can be specified as a message to certain player(s) or all players.
