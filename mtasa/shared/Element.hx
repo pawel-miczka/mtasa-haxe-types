@@ -1,3 +1,3 @@
-package mtasa.server;
+package mtasa.shared;
 
 extern class Element {}

@@ -1,6 +1,16 @@
 package mtasa.server;
 
+import haxe.Constraints.Function;
+import mtasa.shared.Element;
 import haxe.extern.Rest;
+
+typedef FetchRemoteOptions = {
+	?queueName: String,
+	?postData: String,
+	?formFields: Dynamic,
+	?method: String,
+	?headers: Dynamic
+}
 
 @:native("_G")
 extern class Functions {
@@ -1376,13 +1386,6 @@ You can only change the ID of an element clientside if that element has been cre
 	static function addEvent():Void;
 
 	/**
-		This function will add an event handler. An event handler is a function that will be called when the event it's attached to is triggered. See event system for more information on how the event system works.
-
-		@see https://wiki.mtasa.com/wiki/AddEventHandler
-	**/
-	static function addEventHandler():Void;
-
-	/**
 		This function is used to stop the automatic internal handling of events, for example this can be used to prevent an item being given to a player when they walk over a pickup, by canceling the onPickupUse event.cancelEvent does not have an effect on all events, see the individual event's pages for information on what happens when the event is canceled. cancelEvent does not stop further event handlers from being called, as the order of event handlers being called is undefined in many cases. Instead, you can see if the currently active event has been cancelled using wasEventCancelled.
 
 		@see https://wiki.mtasa.com/wiki/CancelEvent
@@ -1620,7 +1623,7 @@ Note: You cannot use "check", "list" or "test" as a command name.
 
 		@see https://wiki.mtasa.com/wiki/AddCommandHandler
 	**/
-	static function addCommandHandler():Void;
+	static function addCommandHandler(commandName:String, handlerFunction:Function, ?restricted:Bool = false, ?caseSensitive:Bool = true):Bool;
 
 	/**
 		Binds a player's key to a handler function or command, which will be called when the key is pressed.
@@ -2721,7 +2724,7 @@ As an example this can be used to change the "score" value which will be shown a
 
 		@see https://wiki.mtasa.com/wiki/FetchRemote
 	**/
-	static function fetchRemote():Void;
+	static function fetchRemote(url:String, options:FetchRemoteOptions, callbackFunction:Function, ?callbackArguments:Array<Dynamic>):Void;
 
 	/**
 		This function retrieves the ACL request section from the meta.xml file of the given resource.Returns a table with the ACL requests for the given resource, or false if the resource is not valid. A valid resource with no ACL requests will return an empty table.
