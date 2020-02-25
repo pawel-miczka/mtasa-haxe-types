@@ -18,4 +18,6 @@ extern class Functions {
 	static function getRealTime():Time;
 	
 	static function getTickCount():Int;
+
+	static function tocolor(red:Int, green:Int, Blue:Int):Int;
 }
