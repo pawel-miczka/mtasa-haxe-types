@@ -1,7 +1,7 @@
 {
   "name": "mtasa-haxe-types",
   "license": "MIT",
-  "tags": ["mta", "gta"],
+  "tags": ["mtasa", "gta", "lua"],
   "description": "Multi Theft Auto San Andreas variables and classes types",
   "version": "0.0.1",
   "classPath": "mtasa/",
