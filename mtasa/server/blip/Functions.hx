@@ -22,7 +22,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/CreateBlip
 	**/
-	static function createBlip(x:Float, y:Float, z:Float, ?icon:Int = 0, ?size:Int = 0, ?r:Int = 255, ?g:Int = 0, ?b:Int = 0, ?a:Int = 255, ?ordering:Int = 0, ?visibleDistance:Float = 16383.0, ?visibleTo:Element):Blip;
+	static function createBlip(x:Float, y:Float, z:Float, ?icon:Int, ?size:Int, ?r:Int, ?g:Int, ?b:Int, ?a:Int, ?ordering:Int, ?visibleDistance:Float, ?visibleTo:Element):Blip;
 
 	/**
 		This function creates a blip element, which is displayed as an icon on the client's radar.
@@ -43,7 +43,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/CreateBlip
 	**/
-	static function createBlipAttachedTo(elementToAttachTo:Element, ?icon:Int = 0, ?size:Int = 0, ?r:Int = 255, ?g:Int = 0, ?b:Int = 0, ?a:Int = 255, ?ordering:Int = 0, ?visibleDistance:Float = 16383.0, ?visibleTo:Element):Blip;
+	static function createBlipAttachedTo(elementToAttachTo:Element, ?icon:Int, ?size:Int, ?r:Int, ?g:Int, ?b:Int, ?a:Int, ?ordering:Int, ?visibleDistance:Float, ?visibleTo:Element):Blip;
 
 	/**
 		This function will tell you what color a blip is. This color is only applicable to the default blip icon (,  or ). All other icons will ignore this.
