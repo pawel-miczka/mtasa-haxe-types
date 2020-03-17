@@ -15,5 +15,5 @@ jobs:
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: New issue
           body: Hello World
-          to: ${{secrects.ISSUES_TARGET_EMAIL}}
+          to: ${{ secrets.ISSUES_TARGET_EMAIL }}
           from: GitHub
