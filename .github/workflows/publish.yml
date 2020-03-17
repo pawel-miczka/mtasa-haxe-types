@@ -1,0 +1,12 @@
+name: Publish to Haxelib repository
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  publish_to_haxelib:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: haxelib submit
