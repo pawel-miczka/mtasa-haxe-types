@@ -6,6 +6,8 @@ on:
 
 jobs:
   send_issue_email:
+    runs-on: ubuntu-latest
+    
     steps:
       - uses: dawidd6/action-send-mail@master
         with:
