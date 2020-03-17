@@ -9,4 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: ianharrigan/GitHubActionsTest/.github/actions/haxe@master
+        with:
+          haxe-version: [4.0.5]
       - run: haxelib submit
