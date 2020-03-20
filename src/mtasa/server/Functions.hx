@@ -1,5 +1,11 @@
 package mtasa.server;
 
+import mtasa.returns.ClothesTypeIndex;
+import mtasa.returns.ClothesModelTexture;
+import mtasa.server.classes.ColShape;
+import mtasa.server.classes.Ban;
+import mtasa.server.classes.ACL;
+import mtasa.server.classes.ACLGroup;
 import haxe.Constraints.Function;
 import mtasa.shared.Element;
 import haxe.extern.Rest;
@@ -14,6 +20,905 @@ typedef FetchRemoteOptions = {
 
 @:native("_G")
 extern class Functions {
+	/**
+		This function adds an **account** to the list of registered accounts of the current server.
+
+		@param name The name of the account you wish to make, this normally is the player's name.
+		@param pass The password to set for this account for future logins.
+		@param allowCaseVariations Whether the username is case sensitive (if this is set to true, usernames "Bob" and "bob" will refer to different accounts)
+
+		@see https://wiki.mtasa.com/wiki/AddAccount
+	**/
+	static function addAccount(name:String, pass:String, ?allowCaseVariations:Bool = false):Account;
+
+	/**
+		This function copies all of the data from one account to another.
+
+		@param theAccount The account you wish to copy the data to.
+		@param fromAccount The account you wish to copy the data from.
+
+		@see https://wiki.mtasa.com/wiki/CopyAccountData
+	**/
+	static function copyAccountData(account:Account, fromAccount:Account):Bool;
+
+	/**
+		This function returns an account for a specific user.
+
+		@param username The username of the account you want to retrieve
+		@param password The password for the account. If this argument is not specified, you can get the account whatever password it is, otherwise the password must match the account's.
+		@param caseSensitive Specifies whether to ignore the case when searching for an account.
+
+		@see https://wiki.mtasa.com/wiki/GetAccount
+	**/
+	static function getAccount(username:String, ?password:String, ?caseSensitive:Bool = true):Account;
+
+	/**
+		This function retrieves a string that has been stored using setAccountData. Data stored as account data is persistent across user's sessions and maps, unless they are logged into a guest account.
+
+		@param theAccount The account you wish to retrieve the data from.
+		@param key The key under which the data is stored
+
+		@see https://wiki.mtasa.com/wiki/GetAccountData
+	**/
+	static function getAccountData(theAccount:Account, key:String):String;
+
+	/**
+		This function retrieves the name of an account.
+
+		@param theAccount The account you wish to get the name of.
+
+		@see https://wiki.mtasa.com/wiki/GetAccountName
+	**/
+	static function getAccountName(theAccount:Account):String;
+
+	/**
+		This function returns the player element that is currently using a specified account, i.e. is logged into it. Only one player can use an account at a time.
+
+		@param theAccount The account you wish to get the player of.
+
+		@see https://wiki.mtasa.com/wiki/GetAccountPlayer
+	**/
+	static function getAccountPlayer(account:Account):Player;
+
+	/**
+		This function returns the last serial that logged onto the specified account.
+
+		@param theAccount The account to get serial from
+
+		@see https://wiki.mtasa.com/wiki/GetAccountSerial
+	**/
+	static function getAccountSerial(theAccount:Account):String;
+
+	/**
+		This function returns a table over all the accounts that exist in the server internal.db file. (Note: accounts.xml is no longer used after version 1.0.4)
+
+		@see https://wiki.mtasa.com/wiki/GetAccounts
+	**/
+	static function getAccounts():Array<Account>;
+
+	/**
+		This function returns a table containing all accounts that were logged onto from specified serial. If the serial is empty string, it will return all accounts that were never logged onto.
+
+		@param serial The serial to get accounts from
+
+		@see https://wiki.mtasa.com/wiki/GetAccountsBySerial
+	**/
+	static function getAccountsBySerial(serial:String):Array<Account>;
+
+	/**
+		This function returns a table containing all the user data for the account provided
+
+		@param theAccount The account you wish to retrieve all data from.
+
+		@see https://wiki.mtasa.com/wiki/GetAllAccountData
+	**/
+	static function getAllAccountData(theAccount:Account):Array<String>;
+
+	/**
+		This function returns the specified player's account object.
+
+		@param thePlayer The player element you want to get the account of.
+
+		@see https://wiki.mtasa.com/wiki/GetPlayerAccount
+	**/
+	static function getPlayerAccount(thePlayer:Player):Account;
+
+	/**
+		This function checks to see if an account is a guest account. A guest account is an account automatically created for a user when they join the server and deleted when they quit or login to another account. Data stored in a guest account is not stored after the player has left the server. As a consequence, this function will check if a player is logged in or not.
+
+		@param theAccount The account you want to check to see if it is a guest account.
+
+		@see https://wiki.mtasa.com/wiki/IsGuestAccount
+	**/
+	static function isGuestAccount(theAccount:Account):Void;
+
+	/**
+		This functions logs the given player in to the given account. You need to provide the password needed to log into that account.
+
+		@param thePlayer The player to log into an account
+		@param theAccount The account to log the player into
+		@param thePassword The password needed to sign into this account
+
+		@see https://wiki.mtasa.com/wiki/LogIn
+	**/
+	static function logIn(thePlayer:Player, theAccount:Account, thePassword:String):Bool;
+
+	/**
+		This function logs the given player out of his current account.
+
+		@param thePlayer The player to log out of his current account
+
+		@see https://wiki.mtasa.com/wiki/LogOut
+	**/
+	static function logOut(thePlayer:Player):Bool;
+
+	/**
+		This function is used to delete existing player accounts.
+
+		@param theAccount The account you wish to remove
+
+		@see https://wiki.mtasa.com/wiki/RemoveAccount
+	**/
+	static function removeAccount(theAccount:Account):Bool;
+
+	/**
+		This function sets a string to be stored in an account. This can then be retrieved using getAccountData. Data stored as account data is persistent across user's sessions and maps, unless they are logged into a guest account. Even if logged into a guest account, account data can be useful as a way to store a reference to your own account system, though it's persistence is equivalent to that of using setElementData on the player's element.
+
+		@param theAccount The account you wish to retrieve the data from
+		@param key The key under which you wish to store the data
+		@param value The value you wish to store. Set to false to remove the data. NOTE: you cannot store tables as values, but you can use toJSON strings
+
+		@see https://wiki.mtasa.com/wiki/SetAccountData
+	**/
+	static function setAccountData(theAccount:Account, key:String, value:String):Bool;
+
+	/**
+		This function sets the password of the specified account.
+
+		@param theAccount the account whose password you want to set
+		@param password the password
+
+		@see https://wiki.mtasa.com/wiki/SetAccountPassword
+	**/
+	static function setAccountPassword(theAccount:Account, password:String):Bool;
+
+	/**
+		This function returns the account with the specific ID.
+
+		@param id The ID to get account from
+
+		@see https://wiki.mtasa.com/wiki/GetAccountByID
+	**/
+	static function getAccountByID(id:Int):Account;
+
+	/**
+		This function retrieves the ID of an account.
+
+		@see https://wiki.mtasa.com/wiki/GetAccountID
+	**/
+	static function getAccountID(theAccount:Account):Account;
+
+	/**
+		This function retrieves the IP address of an account.
+
+		@param theAccount The account you wish to get the IP of
+
+		@see https://wiki.mtasa.com/wiki/GetAccountIP
+	**/
+	static function getAccountIP(theAccount:Account):String;
+
+	/**
+		This function returns a table containing all accounts with specified dataName and value (set with setAccountData).
+
+		@param dataName The name of the data
+		@param value The value the dataName should have
+
+		@see https://wiki.mtasa.com/wiki/GetAccountsByData
+	**/
+	static function getAccountsByData(dataName:String, value:String):Array<Account>;
+
+	/**
+		This function returns a table containing all accounts that were logged onto from specified IP-address.
+
+		@param ip The IP to get accounts from
+
+		@see https://wiki.mtasa.com/wiki/GetAccountsByIP
+	**/
+	static function getAccountsByIP(ip:String):Array<Account>;
+
+	/**
+		This function sets the name of an account.
+
+		@param theAccount The account you wish to change the name
+		@param name The new name
+		@param allowCaseVariations Whether the username is case sensitive (if this is set to true, usernames "Bob" and "bob" will refer to different accounts)
+
+		@see https://wiki.mtasa.com/wiki/SetAccountName
+	**/
+	static function setAccountName(theAccount:Account, name:String, ?allowCaseVariations:Bool = false):String;
+
+	/**
+		This function creates an ACL entry in the Access Control List system with the specified name.
+
+		@see https://wiki.mtasa.com/wiki/AclCreate
+	**/
+	static function aclCreate(aclName:String):ACL;
+
+	/**
+		This function creates a group in the ACL. An ACL group can contain objects like players and resources. They specify who has access to the ACL's in this group.
+
+		@see https://wiki.mtasa.com/wiki/AclCreateGroup
+	**/
+	static function aclCreateGroup(groupName:String):ACLGroup;
+
+	/**
+		This function destroys the ACL passed. The destroyed ACL will no longer be valid.
+
+		@see https://wiki.mtasa.com/wiki/AclDestroy
+	**/
+	static function aclDestroy(theACL:ACL):Bool;
+
+	/**
+		This function destroys the given ACL group. The destroyed ACL group will no longer be valid.
+
+		@see https://wiki.mtasa.com/wiki/AclDestroyGroup
+	**/
+	static function aclDestroyGroup(aclGroup:ACLGroup):Bool;
+
+	/**
+		Get the ACL with the given name. If need to get most of the ACL's, you should consider using aclList to get a table of them all.
+
+		@see https://wiki.mtasa.com/wiki/AclGet
+	**/
+	static function aclGet(aclName:String):ACL;
+
+	/**
+		This function is used to get the ACL group with the given name. If you need most of the groups you should consider using aclGroupList instead to get a table containing them all.
+
+		@see https://wiki.mtasa.com/wiki/AclGetGroup
+	**/
+	static function aclGetGroup(groupName:String):ACLGroup;
+
+	/**
+		Get the name of given ACL.
+
+		@see https://wiki.mtasa.com/wiki/AclGetName
+	**/
+	static function aclGetName(theACL:ACL):String;
+
+	/**
+		This function returns whether the access for the given right is set to true or false in the ACL.
+
+		@see https://wiki.mtasa.com/wiki/AclGetRight
+	**/
+	static function aclGetRight(theACL:ACL, rightName:String):Bool;
+
+	/**
+		This function adds the given ACL to the given ACL group. This makes the resources and players in the given ACL group have access to what's specified in the given ACL. The rights for something in the different ACL's in a group are OR-ed together, which means if one ACL gives access to something, this ACL group will have access to that.
+
+		@see https://wiki.mtasa.com/wiki/AclGroupAddACL
+	**/
+	static function aclGroupAddACL(aclGroup:ACLGroup):Bool;
+
+	/**
+		This function adds an object to the given ACL group. An object can be a player's account, specified as:Or a resource, specified as:
+		user.<accountName> or resource.<resourceName>
+
+			@see https://wiki.mtasa.com/wiki/AclGroupAddObject
+	**/
+	static function aclGroupAddObject(aclGroup:ACLGroup, objectName:String):Bool;
+
+	/**
+		This function is used to get the name of the given ACL group.
+
+		@see https://wiki.mtasa.com/wiki/AclGroupGetName
+	**/
+	static function aclGroupGetName(aclGroup:ACLGroup):String;
+
+	/**
+		This function returns a table of all the ACL groups.
+
+		@see https://wiki.mtasa.com/wiki/AclGroupList
+	**/
+	static function aclGroupList():lua.Table<Int, ACL>;
+
+	/**
+		This function returns a table over all the ACL's that exist in a given ACL group.
+
+		@see https://wiki.mtasa.com/wiki/AclGroupListACL
+	**/
+	static function aclGroupListACL(aclGroup:ACLGroup):lua.Table<Int, ACL>;
+
+	/**
+		This function returns a table over all the objects that exist in a given ACL group. These are objects like players and resources.
+
+		@see https://wiki.mtasa.com/wiki/AclGroupListObjects
+	**/
+	static function aclGroupListObjects(aclGroup:ACLGroup):lua.Table<Int, String>;
+
+	/**
+		This function removes the given ACL from the given ACL group.
+
+		@see https://wiki.mtasa.com/wiki/AclGroupRemoveACL
+	**/
+	static function aclGroupRemoveACL(aclGroup:ACLGroup, theACL:ACL):Bool;
+
+	/**
+		This function removes the given object from the given ACL group. The object can be a resource or a player. See aclGroupAddObject for more details.
+
+		@see https://wiki.mtasa.com/wiki/AclGroupRemoveObject
+	**/
+	static function aclGroupRemoveObject(aclGroup:ACLGroup, objectName:String):Bool;
+
+	/**
+		This function returns a list of all the ACLs.
+
+		@see https://wiki.mtasa.com/wiki/AclList
+	**/
+	static function aclList():lua.Table<Int, ACL>;
+
+	/**
+		This function returns a table of all the rights that a given ACL has.
+
+		@see https://wiki.mtasa.com/wiki/AclListRights
+	**/
+	static function aclListRights(theACL:ACL, allowedType:String):lua.Table<Int, String>;
+
+	/**
+		This function reloads the ACL's and the ACL groups from the ACL XML file. All ACL and ACL group elements are invalid after a call to this and should not be used anymore.
+
+		@see https://wiki.mtasa.com/wiki/AclReload
+	**/
+	static function aclReload():Bool;
+
+	/**
+		This function removes the given right (string) from the given ACL.
+
+		@see https://wiki.mtasa.com/wiki/AclRemoveRight
+	**/
+	static function aclRemoveRight(theACL:ACL, rightName:String):Bool;
+
+	/**
+		The ACL XML file is automatically saved whenever the ACL is modified, but the automatic save can be delayed by up to 10 seconds for performance reasons. Calling this function will force an immediate save.
+
+		@see https://wiki.mtasa.com/wiki/AclSave
+	**/
+	static function aclSave():Bool;
+
+	/**
+		This functions changes or adds the given right in the given ACL. The access can be true or false and specifies whether the ACL gives access to the right or not.
+
+		@see https://wiki.mtasa.com/wiki/AclSetRight
+	**/
+	static function aclSetRight(theACL:ACL, rightName:String, hasAccess:Bool):Bool;
+
+	/**
+		This function returns whether or not the given object has access to perform the given action.Scripts frequently wish to limit access to features to particular users. The naïve way to do this would be to check if the player who is attempting to perform an action is in a particular group (usually the Admin group). The main issue with doing this is that the Admin group is not guaranteed to exist. It also doesn't give the server admin any flexibility. He might want to allow his 'moderators' access to the function you're limiting access to, or he may want it disabled entirely.
+
+		@see https://wiki.mtasa.com/wiki/HasObjectPermissionTo
+	**/
+	static function hasObjectPermissionTo(objectName:String, action:String, ?defaultPermission:Bool):Bool;
+
+	/**
+		This function is used to determine if an object is in a group.
+
+		@see https://wiki.mtasa.com/wiki/IsObjectInACLGroup
+	**/
+	static function isObjectInACLGroup(objectName:String, aclGroup:ACLGroup):Bool;
+
+	/**
+		This function will add a ban for the specified IP/username/serial to the server.
+
+		@see https://wiki.mtasa.com/wiki/AddBan
+	**/
+	static function addBan(?IP:String, ?username:String, ?serial:String, ?responsibleElement:Player, ?reason:String, ?seconds:Int):Ban;
+
+	/**
+		This function will ban the specified player by either IP, serial or username
+
+		@see https://wiki.mtasa.com/wiki/BanPlayer
+	**/
+	static function banPlayer(bannedPlayer:Player, ?IP:Bool, ?username:Bool, ?serial:Bool, ?responsiblePlayer:Player, ?reason:String, ?seconds:Int):Ban;
+
+	/**
+		This function will return the responsible admin (nickname of the admin) of the specified ban.
+
+		@see https://wiki.mtasa.com/wiki/GetBanAdmin
+	**/
+	static function getBanAdmin(theBan:Ban):String;
+
+	/**
+		This function will return the IP of the specified ban.
+
+		@see https://wiki.mtasa.com/wiki/GetBanIP
+	**/
+	static function getBanIP(theBan:Ban):String;
+
+	/**
+		This function will return the nickname (nickname that the player had when he was banned) of the specified ban.
+
+		@see https://wiki.mtasa.com/wiki/GetBanNick
+	**/
+	static function getBanNick(theBan:Ban):String;
+
+	/**
+		This function will return the ban reason of the specified ban.
+
+		@see https://wiki.mtasa.com/wiki/GetBanReason
+	**/
+	static function getBanReason(theBan:Ban):String;
+
+	/**
+		This function will return the serial of the specified ban.
+
+		@see https://wiki.mtasa.com/wiki/GetBanSerial
+	**/
+	static function getBanSerial(theBan:Ban):String;
+
+	/**
+		This function will return the time the specified ban was created, in seconds.
+
+		@see https://wiki.mtasa.com/wiki/GetBanTime
+	**/
+	static function getBanTime(theBan:Ban):Int;
+
+	/**
+		This function will return the username of the specified ban.Returns a string of the username if everything was successful, false if invalid arguments are specified if there was no username specified for the ban.
+
+		@see https://wiki.mtasa.com/wiki/GetBanUsername
+	**/
+	static function getBanUsername(theBan:Ban):String;
+
+	/**
+		This function will return a table containing all the bans present in the server's banlist.xml.
+
+		@see https://wiki.mtasa.com/wiki/GetBans
+	**/
+	static function getBans():lua.Table<Int, Ban>;
+
+	/**
+		This function will return the unbanning time of the specified ban in seconds.
+
+		@see https://wiki.mtasa.com/wiki/GetUnbanTime
+	**/
+	static function getUnbanTime(theBan:Ban):Int;
+
+	/**
+		This function checks whether the passed value is valid ban or not.Returns true if the value is a ban, false otherwise.
+
+		@see https://wiki.mtasa.com/wiki/IsBan
+	**/
+	static function isBan(theBan:Ban):Bool;
+
+	/**
+		This function will kick the specified player from the server.
+
+		@see https://wiki.mtasa.com/wiki/KickPlayer
+	**/
+	static function kickPlayer(player:Player, ?responsiblePlayer:Player, ?reason:String):Bool;
+
+	/**
+		This function sets a new admin for a ban.
+
+		@see https://wiki.mtasa.com/wiki/SetBanAdmin
+	**/
+	static function setBanAdmin(theBan:Ban, theAdmin:String):Void;
+
+	/**
+		This function sets a new nick for a ban.
+
+		@see https://wiki.mtasa.com/wiki/SetBanNick
+	**/
+	static function setBanNick(theBan:Ban, theNick:String):Bool;
+
+	/**
+		This function sets the reason for the specified ban.
+
+		@see https://wiki.mtasa.com/wiki/SetBanReason
+	**/
+	static function setBanReason(theBan:Ban, reason:String):Bool;
+
+	/**
+		This function sets a new unban time of a given ban using unix timestamp (seconds since Jan 01 1970).
+
+		@see https://wiki.mtasa.com/wiki/SetUnbanTime
+	**/
+	static function setUnbanTime(theBan:Ban, time:Int):Bool;
+
+	/**
+		This function will reload the server ban list file.Returns true if the ban list was reloaded successfully, false otherwise.
+
+		@see https://wiki.mtasa.com/wiki/ReloadBans
+	**/
+	static function reloadBans():Bool;
+
+	/**
+		This function will remove a specific ban.
+
+		@see https://wiki.mtasa.com/wiki/RemoveBan
+	**/
+	static function removeBan(theBan:Ban, ?responsibleElement:Player):Bool; // TODO: add root as responsible element
+
+	/**
+		This function retrieves the current gametype as set by setGameType. The game type is displayed in the server browser next to the server's name.Returns the gametype as a string. If no gametype is set it returns nil.
+
+		@see https://wiki.mtasa.com/wiki/GetGameType
+	**/
+	static function getGameType():String;
+
+	/**
+		This function retrieves the current mapname as set by setMapName.Returns the mapname as a string. If no mapname is set it returns nil.
+
+		@see https://wiki.mtasa.com/wiki/GetMapName
+	**/
+	static function getMapName():String;
+
+	/**
+		This function gets a rule value. A rule value is a string that can be viewed by server browsers and used for filtering the server list.
+
+		@param key The name of the rule
+
+		@see https://wiki.mtasa.com/wiki/GetRuleValue
+	**/
+	static function getRuleValue(key:String):String;
+
+	/**
+		This function removes a set rule value that can be viewed by server browsers.
+		Returns true if the rule value was removed, false if it failed.
+
+		@param key The name of the rule you wish to remove
+
+		@see https://wiki.mtasa.com/wiki/RemoveRuleValue
+	**/
+	static function removeRuleValue(key:String):Bool;
+
+	/**
+		This function sets a string containing a name for the game type.
+		This should be the game-mode that is active, for example
+		"Capture The Flag" or "Deathmatch". This is then displayed in the
+		server browser and external server browsers.It should be noted that
+		mapmanager handles this automatically for gamemodes that
+		utilise the map/gamemode system.
+
+		@param gameType A string containing a name for the game mode, or false to clear it.
+
+		@see https://wiki.mtasa.com/wiki/SetGameType
+	**/
+	static function setGameType(gameType:String):Bool;
+
+	/**
+		This function is used to set a map name that will be visible
+		in the server browser. In practice you should generally rely
+		on the mapmanager to do this for you.Returns true
+		if map name was set successfully, false otherwise.
+
+		@param mapName The name you wish the server browser to show.
+
+		@see https://wiki.mtasa.com/wiki/SetMapName
+	**/
+	static function setMapName(mapName:String):Bool;
+
+	/**
+		This function sets a rule value that can be viewed by server browsers.
+		Returns true if the rule value was set, false if invalid arguments were specified.
+
+		@param key The name of the rule
+		@param value The value you wish to set for the rule
+
+		@see https://wiki.mtasa.com/wiki/SetRuleValue
+	**/
+	static function setRuleValue(key:String, value:String):Bool;
+
+	/**
+		This function plays a frontend sound for the specified player.
+
+		@param thePlayer the player you want the sound to play for.
+		@param sound a whole int specifying the sound id to play.
+
+		@see https://wiki.mtasa.com/wiki/PlaySoundFrontEnd
+	**/
+	static function playSoundFrontEnd(thePlayer:Player, sound:Int):Bool;
+
+	/**
+		This function creates a blip element, which is displayed as an icon on the client's radar.
+
+		@param x The x position of the blip, in world coordinates,
+		@param y The y position of the blip, in world coordinates,
+		@param z The z position of the blip, in world coordinates,
+		@param icon The icon that the radar blips should be.
+		@param size The size of the radar blip. Only applicable to the Marker icon. Default is 2. Maximum is 25.
+		@param r The amount of red in the blip's color (0–255). Only applicable to the Marker icon. Default is 255.
+		@param g The amount of green in the blip's color (0–255). Only applicable to the Marker icon. Default is 255.
+		@param b The amount of blue in the blip's color (0–255). Only applicable to the Marker icon. Default is 255.
+		@param a The amount of alpha in the blip's color (0–255). Only applicable to the Marker icon. Default is 255.
+		@param ordering This defines the blip's Z-level ordering (-32768–32767). Default is 0.
+		@param visibleDistance The maximum distance from the camera at which the blip is still visible (0–65535).
+		@param visibleTo This defines which elements can see the blip. Defaults to visible to everyone.
+
+		@see https://wiki.mtasa.com/wiki/CreateBlip
+	**/
+	static function createBlip(x:Float, y:Float, z:Float, ?icon:Int, ?size:Int, ?r:Int, ?g:Int, ?b:Int, ?a:Int, ?ordering:Int, ?visibleDistance:Float,
+		?visibleTo:Element):Blip;
+
+	/**
+		This function creates a blip element, which is displayed as an icon on the client's radar.
+
+		@param elementToAttachTo The element to attach the marker to.
+		@param x The x position of the blip, in world coordinates,
+		@param y The y position of the blip, in world coordinates,
+		@param z The z position of the blip, in world coordinates,
+		@param icon The icon that the radar blips should be.
+		@param size The size of the radar blip. Only applicable to the Marker icon. Default is 2. Maximum is 25.
+		@param r The amount of red in the blip's color (0–255). Only applicable to the Marker icon. Default is 255.
+		@param g The amount of green in the blip's color (0–255). Only applicable to the Marker icon. Default is 255.
+		@param b The amount of blue in the blip's color (0–255). Only applicable to the Marker icon. Default is 255.
+		@param a The amount of alpha in the blip's color (0–255). Only applicable to the Marker icon. Default is 255.
+		@param ordering This defines the blip's Z-level ordering (-32768–32767). Default is 0.
+		@param visibleDistance The maximum distance from the camera at which the blip is still visible (0–65535).
+		@param visibleTo This defines which elements can see the blip. Defaults to visible to everyone.
+
+		@see https://wiki.mtasa.com/wiki/CreateBlip
+	**/
+	static function createBlipAttachedTo(elementToAttachTo:Element, ?icon:Int, ?size:Int, ?r:Int, ?g:Int, ?b:Int, ?a:Int, ?ordering:Int,
+		?visibleDistance:Float, ?visibleTo:Element):Blip;
+
+	/**
+		This function will tell you what color a blip is. This color is only applicable to the default blip icon (,  or ). All other icons will ignore this.
+
+		@param theBlip The blip whose color you wish to get.
+
+		@see https://wiki.mtasa.com/wiki/GetBlipColor
+	**/
+	// TODO: multiple return
+	static function getBlipColor(theBlip:Blip):Void;
+
+	/**
+		This function returns the icon a blip currently has.
+
+		@param theBlip the blip we're getting the icon number of.
+
+		@see https://wiki.mtasa.com/wiki/GetBlipIcon
+	**/
+	static function getBlipIcon(theBlip:Blip):Int;
+
+	/**
+		This function gets the Z ordering value of a blip. The Z ordering determines if a blip appears on top of or below other blips. Blips with a higher Z ordering value appear on top of blips with a lower value. The default value for all blips is 0.
+
+		@param theBlip the blip to retrieve the Z ordering value of.
+
+		@see https://wiki.mtasa.com/wiki/GetBlipOrdering
+	**/
+	static function getBlipOrdering(theBlip:Blip):Int;
+
+	/**
+		This function gets the size of a blip..
+
+		@param theBlip The blip you wish to get the size of.
+
+		@see https://wiki.mtasa.com/wiki/GetBlipSize
+	**/
+	static function getBlipSize(theBlip:Blip):Int;
+
+	/**
+		This function will tell you what visible distance a blip has.
+
+		@param theBlip The blip whose visible distance you wish to get.
+
+		@see https://wiki.mtasa.com/wiki/GetBlipVisibleDistance
+	**/
+	static function getBlipVisibleDistance(theBlip:Blip):Float;
+
+	/**
+		This function will let you change the color of a blip. This color is only applicable to the default blip icon (,  or ). All other icons will ignore this.
+
+		@param theBlip The blip who's color you wish to set.
+		@param red The amount of red in the blip's color (0 - 255).
+		@param green The amount of green in the blip's color (0 - 255).
+		@param blue The amount of blue in the blip's color (0 - 255).
+		@param alpha The amount of alpha in the blip's color (0 - 255). Alpha decides transparancy where 255 is opaque and 0 is transparent.
+
+		@see https://wiki.mtasa.com/wiki/SetBlipColor
+	**/
+	static function setBlipColor(theBlip:Blip, red:Int, green:Int, blue:Int, alpha:Int):Bool;
+
+	/**
+		This function sets the icon for an existing blip element.
+
+		@param theBlip The blip you wish to set the icon of.
+		@param icon A number indicating the icon you wish to change it do.
+
+		@see https://wiki.mtasa.com/wiki/SetBlipIcon
+	**/
+	static function setBlipIcon(theBlip:Blip, icon:Int):Bool;
+
+	/**
+		This function sets the Z ordering of a blip. It allows you to make a blip appear on top of or below other blips.
+
+		@param theBlip the blip whose Z ordering to change.
+		@param ordering the new Z ordering value. Blips with higher values will appear on top of blips with lower values. Possible range: -32767 to 32767. Default: 0.
+
+		@see https://wiki.mtasa.com/wiki/SetBlipOrdering
+	**/
+	static function setBlipOrdering(theBlip:Blip, ordering:Int):Bool;
+
+	/**
+		This function sets the size of a blip's icon.
+
+		@param theBlip The blip you wish to get the size of.
+		@param iconSize The size you wish the icon to be. 2 is the default value. 25 is the maximum value. Value gets clamped between 0 and 25.
+
+		@see https://wiki.mtasa.com/wiki/SetBlipSize
+	**/
+	static function setBlipSize(theBlip:Blip, iconSize:Int):Bool;
+
+	/**
+		This function will set the visible distance of a blip.
+
+		@param theBlip The blip whose visible distance you wish to get.
+		@param theDistance The distance you want the blip to be visible for. Value gets clamped between 0 and 65535.
+
+		@see https://wiki.mtasa.com/wiki/SetBlipVisibleDistance
+	**/
+	static function setBlipVisibleDistance(theBlip:Blip, theDistance:Float):Bool;
+
+	/**
+		This function will fade a player's camera to a color or back to normal over a specified time period. This will also affect the sound volume for the player (50% faded = 50% volume, full fade = no sound). For clientside scripts you can perform 2 fade ins or fade outs in a row, but for serverside scripts you must use one then the other.
+
+		@see https://wiki.mtasa.com/wiki/FadeCamera
+	**/
+	static function fadeCamera(player:Player, fadeIn:Bool, ?timeToFade:Float, ?red:Int, ?green:Int, ?blue:Int):Bool;
+
+	/**
+		Returns the interior of the local camera (independent of the interior of the local player).
+
+		@see https://wiki.mtasa.com/wiki/GetCameraInterior
+	**/
+	static function getCameraInterior(thePlayer:Player):Int;
+
+	/**
+		This function gets the position of the camera and the position of the point it is facing.
+
+		@see https://wiki.mtasa.com/wiki/GetCameraMatrix
+	**/
+	static function getCameraMatrix(thePlayer:Player):Void; // TODO: multireturn
+
+	/**
+		This function returns an element that corresponds to the current target of the specified player's camera (i.e. what it is following).
+
+		@see https://wiki.mtasa.com/wiki/GetCameraTarget
+	**/
+	static function getCameraTarget(thePlayer:Player):Element;
+
+	/**
+		Sets the interior of the local camera. Only the interior of the camera is changed, the local player stays in the interior he was in.
+
+		@see https://wiki.mtasa.com/wiki/SetCameraInterior
+	**/
+	static function setCameraInterior(thePlayer:Player, interior:Int):Bool;
+
+	/**
+		This function sets the camera's position and direction. The first three arguments are the point at which the camera lies, the last three are the point the camera faces (or the point it "looks at").Note: Calling this function takes the camera's focus away from the player and sets the camera in a fixed position and rotation. The camera's focus can be brought back to the player using the setCameraTarget function.
+
+		@see https://wiki.mtasa.com/wiki/SetCameraMatrix
+	**/
+	static function setCameraMatrix(thePlayer:Player, positionX:Float, positionY:Float, positionZ:Float, ?lookAtX:Float, ?lookAtY:Float, ?lookAtZ:Float,
+		?roll:Float, ?fov:Float):Bool;
+
+	/**
+		This function allows you to set a player's camera to follow other elements instead. Currently supported element type is:
+
+		@see https://wiki.mtasa.com/wiki/SetCameraTarget
+	**/
+	static function setCameraTarget(player:Player, ?target:Player):Bool;
+
+	/**
+		This function is used to get the name of a body part on a player.
+
+		@see https://wiki.mtasa.com/wiki/GetBodyPartName
+	**/
+	static function getBodyPartName(bodyPartID:Int):String;
+
+	/**
+		This function is used to get the texture and model of clothes by the clothes type and index.
+		(Scans through the list of clothes for the specific type).This function returns 2 strings, a texture and model respectively, false if invalid arguments were passed to the function.
+
+		@see https://wiki.mtasa.com/wiki/GetClothesByTypeIndex
+	**/
+	static function getClothesByTypeIndex(clothesType:Int, clothesIndex:Int):ClothesModelTexture;
+
+	/**
+		This function is used to get the name of a certain clothes type.This function returns a string (the name of the clothes type) if found, false otherwise.
+
+		@see https://wiki.mtasa.com/wiki/GetClothesTypeName
+	**/
+	static function getClothesTypeName(clothesType:Int):String;
+
+	/**
+		This function is used to get the clothes type and index from the texture and model.
+		(Scans through the list of clothes for the specific type).
+
+		@see https://wiki.mtasa.com/wiki/GetTypeIndexFromClothes
+	**/
+	static function getTypeIndexFromClothes(clothesTexture:String, clothesModel:String):ClothesTypeIndex;
+
+	/**
+		This function creates a collision circle. This is a shape that has a position and a radius and infinite height that you can use to detect a player's presence. Events will be triggered when a player enters or leaves it.
+
+		@see https://wiki.mtasa.com/wiki/CreateColCircle
+	**/
+	static function createColCircle(fX:Float, fY:Float, fZ:Float):ColShape;
+
+	/**
+		This function creates a collision cuboid. This is a shape that has a position, width, depth and height. See Wikipedia for a definition of a cuboid. The XYZ of the col starts at the southwest bottom corner of the shape.
+
+		@see https://wiki.mtasa.com/wiki/CreateColCuboid
+	**/
+	static function createColCuboid(fX:Float, fY:Float, fZ:Float, fWidth:Float, fDepth:Float, fHeight:Float):ColShape;
+
+	/**
+		This function creates a collision polygon. See Wikipedia for a definition of a polygon. The first set of X Y of this shape is not part of the colshape bounds, so can set anywhere in the game world, however for performance, place it as close to the centre of the polygon as you can. It should be noted this shape is 2D. There should be at least 3 bound points set.
+
+		@see https://wiki.mtasa.com/wiki/CreateColPolygon
+	**/
+	static function createColPolygon(fCenterX:Float, fCenterY:Float, fX1:Float, fY1:Float, fX2:Float, fY2:Float, fX3:Float, fY3:Float,
+		points:Rest<Float>):ColShape;
+
+	/**
+		This function creates a collision rectangle. This is a shape that has a position and a width and a depth. See Rectangle for a definition of a rectangle. XY marks on the south west corner of the colshape.
+
+		@see https://wiki.mtasa.com/wiki/CreateColRectangle
+	**/
+	static function createColRectangle(fX:Float, fY:Float, fWidth:Float, fHeight:Float):ColShape;
+
+	/**
+		This function creates a collision sphere. This is a shape that has a position and a radius. See Wikipedia for a definition of a sphere.
+
+		@see https://wiki.mtasa.com/wiki/CreateColSphere
+	**/
+	static function createColSphere(fX:Float, fY:Float, fZ:Float, fRadius:Float):ColShape;
+
+	/**
+		This function creates a collision tube. This is a shape that has a position and a 2D (X/Y) radius and a height. See Cylinder for a definition of a tube. A tube is similar to a colcircle, except that it has a limited height, this means you can limit the distance above the position defined by (fX, fY, fZ) that the collision is detected.
+
+		@see https://wiki.mtasa.com/wiki/CreateColTube
+	**/
+	static function createColTube(fX:Float, fY:Float, fZ:Float, fRadius:Float, fHeight:Float):ColShape;
+
+	/**
+		This function is used to retrieve the type of an colshape.
+
+		@see https://wiki.mtasa.com/wiki/GetColShapeType
+	**/
+	static function getColShapeType(shape:ColShape):Int;
+
+	/**
+		Some elements have an associated colshape, for example Marker and Pickup. This function is used to get the associated colshape.
+
+		@see https://wiki.mtasa.com/wiki/GetElementColShape
+	**/
+	static function getElementColShape(element:Element):ColShape;
+
+	/**
+		This function is used to retrieve a list of all elements in a colshape, of the specified type.
+
+		@see https://wiki.mtasa.com/wiki/GetElementsWithinColShape
+	**/
+	static function getElementsWithinColShape(colshape:ColShape, ?elemType:String):lua.Table<Int, Element>;
+
+	/**
+		This function is used to determine if an element is within a collision shape. Please note that for legacy reasons, a colshape created on the client does not collide with elements already existing at that location until they first move. Please also note that before 1.0.3, this did not function correctly when moving a colshape.
+
+		@see https://wiki.mtasa.com/wiki/IsElementWithinColShape
+	**/
+	static function isElementWithinColShape(element:Element, shape:ColShape):Bool;
+
+	/**
+		This function checks if a 3D position is inside a colshape or not.
+
+		@see https://wiki.mtasa.com/wiki/IsInsideColShape
+	**/
+	static function isInsideColShape(shape:ColShape, posX:Float, posY:Float, posZ:Float):Bool;
+
 	/**
 		This function is used to determine whether or not a player's cursor is showing.Returns true if the player's cursor is showing, false if it isn't or if invalid parameters were passed.
 
@@ -146,13 +1051,6 @@ extern class Functions {
 		@see https://wiki.mtasa.com/wiki/GetElementChildrenCount
 	**/
 	static function getElementChildrenCount():Void;
-
-	/**
-		Some elements have an associated colshape, for example Marker and Pickup. This function is used to get the associated colshape.
-
-		@see https://wiki.mtasa.com/wiki/GetElementColShape
-	**/
-	static function getElementColShape():Void;
 
 	/**
 		This function retrieves element data attached to an element under a certain key.
