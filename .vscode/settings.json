@@ -1,9 +1,5 @@
 {
   "haxe.configurations": [
     ["-cp", "src", "-lua", "dummy.lua"]
-  ],
-  "[haxe]": {
-		"editor.formatOnSave": true,
-		"editor.formatOnPaste": true
-	},
+  ]
 }

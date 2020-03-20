@@ -1,4 +1,6 @@
 package mtasa.server.classes;
 
 @:native('ColShape')
-extern class ColShape {}
+extern class ColShape {
+  
+}

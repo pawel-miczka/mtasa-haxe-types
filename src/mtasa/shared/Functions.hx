@@ -3,7 +3,7 @@ package mtasa.shared;
 import haxe.Constraints.Function;
 
 typedef Time = {
-	timestamp:Int
+  timestamp:Int
 }
 
 @:native("_G")
@@ -13,10 +13,10 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/AddEventHandler
 	**/
-	static function addEventHandler(eventName:String, attachedTo:Element, handlerFunction:Function, ?propagate:Bool = true, ?priority:String = "normal"):Void;
-
+  static function addEventHandler(eventName:String, attachedTo:Element, handlerFunction:Function, ?propagate:Bool = true, ?priority:String = "normal"):Void;
+  
 	static function getRealTime():Time;
-
+	
 	static function getTickCount():Int;
 
 	static function tocolor(red:Int, green:Int, Blue:Int):Int;

@@ -1,4 +1,6 @@
 package mtasa.client.classes;
 
 @:native('DxRenderTarget')
-class DxRenderTarget {}
+class DxRenderTarget {
+
+}
