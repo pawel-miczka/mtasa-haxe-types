@@ -1,5 +1,7 @@
 package mtasa.server.account;
 
+import mtasa.server.classes.Account;
+
 @:native("_G")
 extern class Functions {
   /**
