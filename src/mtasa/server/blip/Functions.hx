@@ -1,5 +1,6 @@
 package mtasa.server.blip;
 
+import mtasa.server.classes.Blip;
 import mtasa.shared.Element;
 
 @:native('_G')
