@@ -4,7 +4,7 @@ import mtasa.server.classes.Account;
 
 @:native("_G")
 extern class Functions {
-  /**
+	/**
 		This function adds an **account** to the list of registered accounts of the current server.
 
 		@param name The name of the account you wish to make, this normally is the player's name.
@@ -67,7 +67,7 @@ extern class Functions {
 	/**
 		This function returns the last serial that logged onto the specified account.
 
-		@param theAccount The account to get serial from		
+		@param theAccount The account to get serial from
 
 		@see https://wiki.mtasa.com/wiki/GetAccountSerial
 	**/
@@ -78,7 +78,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/GetAccounts
 	**/
-	static function getAccounts():Array<Account>;
+	static function getAccounts():lua.Table<Int, Account>;
 
 	/**
 		This function returns a table containing all accounts that were logged onto from specified serial. If the serial is empty string, it will return all accounts that were never logged onto.
@@ -87,7 +87,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/GetAccountsBySerial
 	**/
-	static function getAccountsBySerial(serial:String):Array<Account>;
+	static function getAccountsBySerial(serial:String):lua.Table<Int, Account>;
 
 	/**
 		This function returns a table containing all the user data for the account provided
@@ -96,7 +96,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/GetAllAccountData
 	**/
-	static function getAllAccountData(theAccount:Account):Array<String>;
+	static function getAllAccountData(theAccount:Account):lua.Table<Dynamic, Dynamic>;
 
 	/**
 		This function returns the specified player's account object.
@@ -199,7 +199,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/GetAccountsByData
 	**/
-	static function getAccountsByData(dataName:String, value:String):Array<Account>;
+	static function getAccountsByData(dataName:String, value:String):lua.Table<Int, Account>;
 
 	/**
 		This function returns a table containing all accounts that were logged onto from specified IP-address.
@@ -208,7 +208,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/GetAccountsByIP
 	**/
-	static function getAccountsByIP(ip:String):Array<Account>;
+	static function getAccountsByIP(ip:String):lua.Table<Int, Account>;
 
 	/**
 		This function sets the name of an account.
