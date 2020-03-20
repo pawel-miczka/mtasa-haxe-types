@@ -6,7 +6,7 @@ import mtasa.server.classes.ColShape;
 
 @:native('_G')
 extern class Functions {
-  /**
+	/**
 		This function creates a collision circle. This is a shape that has a position and a radius and infinite height that you can use to detect a player's presence. Events will be triggered when a player enters or leaves it.
 
 		@see https://wiki.mtasa.com/wiki/CreateColCircle
@@ -25,7 +25,8 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/CreateColPolygon
 	**/
-	static function createColPolygon(fCenterX:Float, fCenterY:Float, fX1:Float, fY1:Float, fX2:Float, fY2:Float, fX3:Float, fY3:Float, points:Rest<Float>):ColShape;
+	static function createColPolygon(fCenterX:Float, fCenterY:Float, fX1:Float, fY1:Float, fX2:Float, fY2:Float, fX3:Float, fY3:Float,
+		points:Rest<Float>):ColShape;
 
 	/**
 		This function creates a collision rectangle. This is a shape that has a position and a width and a depth. See Rectangle for a definition of a rectangle. XY marks on the south west corner of the colshape.
@@ -53,8 +54,8 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/GetColShapeType
 	**/
-  static function getColShapeType(shape:ColShape):Int;
-  
+	static function getColShapeType(shape:ColShape):Int;
+
 	/**
 		Some elements have an associated colshape, for example Marker and Pickup. This function is used to get the associated colshape.
 

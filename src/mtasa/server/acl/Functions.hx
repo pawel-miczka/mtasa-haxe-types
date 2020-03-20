@@ -5,7 +5,7 @@ import mtasa.server.classes.ACL;
 
 @:native('_G')
 extern class Functions {
-  /**
+	/**
 		This function creates an ACL entry in the Access Control List system with the specified name.
 
 		@see https://wiki.mtasa.com/wiki/AclCreate
@@ -69,10 +69,10 @@ extern class Functions {
 	static function aclGroupAddACL(aclGroup:ACLGroup):Bool;
 
 	/**
-    This function adds an object to the given ACL group. An object can be a player's account, specified as:Or a resource, specified as:
-    user.<accountName> or resource.<resourceName>
+		This function adds an object to the given ACL group. An object can be a player's account, specified as:Or a resource, specified as:
+		user.<accountName> or resource.<resourceName>
 
-		@see https://wiki.mtasa.com/wiki/AclGroupAddObject
+			@see https://wiki.mtasa.com/wiki/AclGroupAddObject
 	**/
 	static function aclGroupAddObject(aclGroup:ACLGroup, objectName:String):Bool;
 

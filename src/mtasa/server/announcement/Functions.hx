@@ -1,7 +1,7 @@
 package mtasa.server.announcement;
 
 extern class Functions {
- /**
+	/**
 		This function retrieves the current gametype as set by setGameType. The game type is displayed in the server browser next to the server's name.Returns the gametype as a string. If no gametype is set it returns nil.
 
 		@see https://wiki.mtasa.com/wiki/GetGameType
@@ -35,11 +35,11 @@ extern class Functions {
 	static function removeRuleValue(key:String):Bool;
 
 	/**
-		This function sets a string containing a name for the game type. 
-		This should be the game-mode that is active, for example 
-		"Capture The Flag" or "Deathmatch". This is then displayed in the 
-		server browser and external server browsers.It should be noted that 
-		mapmanager handles this automatically for gamemodes that 
+		This function sets a string containing a name for the game type.
+		This should be the game-mode that is active, for example
+		"Capture The Flag" or "Deathmatch". This is then displayed in the
+		server browser and external server browsers.It should be noted that
+		mapmanager handles this automatically for gamemodes that
 		utilise the map/gamemode system.
 
 		@param gameType A string containing a name for the game mode, or false to clear it.
@@ -49,9 +49,9 @@ extern class Functions {
 	static function setGameType(gameType:String):Bool;
 
 	/**
-		This function is used to set a map name that will be visible 
-		in the server browser. In practice you should generally rely 
-		on the mapmanager to do this for you.Returns true 
+		This function is used to set a map name that will be visible
+		in the server browser. In practice you should generally rely
+		on the mapmanager to do this for you.Returns true
 		if map name was set successfully, false otherwise.
 
 		@param mapName The name you wish the server browser to show.
@@ -69,5 +69,5 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/SetRuleValue
 	**/
-	static function setRuleValue(key:String, value:String):Bool; 
+	static function setRuleValue(key:String, value:String):Bool;
 }

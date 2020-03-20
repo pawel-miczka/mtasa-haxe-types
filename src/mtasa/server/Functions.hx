@@ -5,11 +5,11 @@ import mtasa.shared.Element;
 import haxe.extern.Rest;
 
 typedef FetchRemoteOptions = {
-	?queueName: String,
-	?postData: String,
-	?formFields: Dynamic,
-	?method: String,
-	?headers: Dynamic
+	?queueName:String,
+	?postData:String,
+	?formFields:Dynamic,
+	?method:String,
+	?headers:Dynamic
 }
 
 @:native("_G")
@@ -422,7 +422,7 @@ extern class Functions {
 
 	/**
 		This function sets the ID of an element to a string. This can be anything from an identifying number, to a name.
-You can only change the ID of an element clientside if that element has been created clientside as well.
+		You can only change the ID of an element clientside if that element has been created clientside as well.
 
 		@see https://wiki.mtasa.com/wiki/SetElementID
 	**/
@@ -563,7 +563,7 @@ You can only change the ID of an element clientside if that element has been cre
 
 	/**
 		This function is the same as triggerClientEvent  except the transmission rate of the data contained in the arguments can be limited
-and other network traffic is not blocked while the data is being transferred.Returns true if the event trigger has been sent, false if invalid arguments were specified.
+		and other network traffic is not blocked while the data is being transferred.Returns true if the event trigger has been sent, false if invalid arguments were specified.
 
 		@see https://wiki.mtasa.com/wiki/TriggerLatentClientEvent
 	**/
@@ -732,7 +732,7 @@ and other network traffic is not blocked while the data is being transferred.Ret
 
 	/**
 		This function will attach a scripting function (handler) to a console command, so that whenever a player or administrator uses the command the function is called.
-Note: You cannot use "check", "list" or "test" as a command name.
+		Note: You cannot use "check", "list" or "test" as a command name.
 
 		@see https://wiki.mtasa.com/wiki/AddCommandHandler
 	**/
@@ -1432,7 +1432,7 @@ Note: You cannot use "check", "list" or "test" as a command name.
 	static function getDeadPlayers():Void;
 
 	/**
-		
+
 
 		@see https://wiki.mtasa.com/wiki/GetPlayerACInfo
 	**/
@@ -1580,7 +1580,7 @@ Note: You cannot use "check", "list" or "test" as a command name.
 
 	/**
 		Added to client side.
-This function allows you to make the server reveal whether or not voice is currently enabled.
+		This function allows you to make the server reveal whether or not voice is currently enabled.
 
 		@see https://wiki.mtasa.com/wiki/IsVoiceEnabled
 	**/
@@ -1609,7 +1609,7 @@ This function allows you to make the server reveal whether or not voice is curre
 
 	/**
 		This function allows you to change ASE announce values for any player using a specified key.
-As an example this can be used to change the "score" value which will be shown at game-monitor.com's server list.
+		As an example this can be used to change the "score" value which will be shown at game-monitor.com's server list.
 
 		@see https://wiki.mtasa.com/wiki/SetPlayerAnnounceValue
 	**/
@@ -2002,7 +2002,7 @@ As an example this can be used to change the "score" value which will be shown a
 
 	/**
 		This function stops a running resource.
-Note: This function does not stop the resource immediately, so don't expect that it starts stopping until the onResourceStop event for that resource is triggered. This happens after the scripts are done executing for this server frame.
+		Note: This function does not stop the resource immediately, so don't expect that it starts stopping until the onResourceStop event for that resource is triggered. This happens after the scripts are done executing for this server frame.
 
 		@see https://wiki.mtasa.com/wiki/StopResource
 	**/
@@ -2462,7 +2462,7 @@ Note: This function does not stop the resource immediately, so don't expect that
 
 	/**
 		This functions performs a bitwise circular left-rotation on the integer value by integer n positions.
-See Bitwise operation for more details.
+		See Bitwise operation for more details.
 
 		@see https://wiki.mtasa.com/wiki/BitLRotate
 	**/
@@ -2470,7 +2470,7 @@ See Bitwise operation for more details.
 
 	/**
 		This functions performs a bitwise circular right-rotation on the integer value by integer n positions.
-See Bitwise operation for more details.
+		See Bitwise operation for more details.
 
 		@see https://wiki.mtasa.com/wiki/BitRRotate
 	**/
@@ -2478,7 +2478,7 @@ See Bitwise operation for more details.
 
 	/**
 		This functions performs a logical left shift on the integer value by integer n positions. In a logical shift, zeros are shifted in to replace the discarded bits.
-See Bitwise operation for more details.
+		See Bitwise operation for more details.
 
 		@see https://wiki.mtasa.com/wiki/BitLShift
 	**/
@@ -2486,7 +2486,7 @@ See Bitwise operation for more details.
 
 	/**
 		This functions performs a logical right shift on the integer value by integer n positions. In a logical shift, zeros are shifted in to replace the discarded bits.
-See Bitwise operation for more details.
+		See Bitwise operation for more details.
 
 		@see https://wiki.mtasa.com/wiki/BitRShift
 	**/
@@ -2494,7 +2494,7 @@ See Bitwise operation for more details.
 
 	/**
 		This functions performs an arithmetic shift on the integer value by integer n positions. In an arithmetic shift, zeros are shifted in to replace the discarded bits. In a right arithmetic shift, the sign bit is shifted in on the left, thus preserving the sign of the operand.
-See Bitwise operation for more details.
+		See Bitwise operation for more details.
 
 		@see https://wiki.mtasa.com/wiki/BitArShift
 	**/
@@ -2572,7 +2572,7 @@ See Bitwise operation for more details.
 
 	/**
 		Used for custom Lua based interpolation, returns the easing value (animation time to use in your custom interpolation) given a progress and an easing function.
-In most cases, either moveObject or interpolateBetween can do the job. getEasingValue is only provided in case you want to do your own custom interpolation based on easing.
+		In most cases, either moveObject or interpolateBetween can do the job. getEasingValue is only provided in case you want to do your own custom interpolation based on easing.
 
 		@see https://wiki.mtasa.com/wiki/GetEasingValue
 	**/
@@ -2636,7 +2636,7 @@ In most cases, either moveObject or interpolateBetween can do the job. getEasing
 
 	/**
 		Interpolates a 3D Vector between a source value and a target value using either linear interpolation or any other easing function.
-It can also be used to interpolate 2D vectors or scalars by only setting some of the x, y, z values and putting 0 to the others.
+		It can also be used to interpolate 2D vectors or scalars by only setting some of the x, y, z values and putting 0 to the others.
 
 		@see https://wiki.mtasa.com/wiki/InterpolateBetween
 	**/
@@ -2770,7 +2770,7 @@ It can also be used to interpolate 2D vectors or scalars by only setting some of
 
 	/**
 		This function retrieves the hex number of a specified color, useful for the dx functions.
-Added server-side.Returns a single value representing the color.
+		Added server-side.Returns a single value representing the color.
 
 		@see https://wiki.mtasa.com/wiki/Tocolor
 	**/
@@ -2820,147 +2820,106 @@ Added server-side.Returns a single value representing the color.
 
 	// /**
 	// 	Returns the codepoints for the i-th through j-th character of the string passed.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.byte
 	// **/
 	// static function utf8.byte():Void;
-
 	// /**
 	// 	Generates a string representing the character codepoints as arguments.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.char
 	// **/
 	// static function utf8.char():Void;
-
 	// /**
 	// 	Converts the UTF-8 codepoint position to byte-string position.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.charpos
 	// **/
 	// static function utf8.charpos():Void;
-
 	// /**
 	// 	Escapes a string to a UTF-8 format string. It supports several escape formats, see the formatting table.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.escape
 	// **/
 	// static function utf8.escape():Void;
-
 	// /**
 	// 	Finds the first occurrence of the pattern in the string passed. If an instance of the pattern is found, a pair of values representing the start and the end of the matched string is returned.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.find
 	// **/
 	// static function utf8.find():Void;
-
 	// /**
 	// 	Converts a UTF-8 string to folded case (lowercase), which can be used to compare two strings. If input is an integer, it's treat as a codepoint and a convert codepoint (integer) is returned.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.fold
 	// **/
 	// static function utf8.fold():Void;
-
 	// /**
 	// 	This function returns a pattern finding iterator for UTF-8 strings. The iterator will search through the string input looking for instances of the pattern you passed. For more information on iterators read the ForTutorial and IteratorsTutorial.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.gmatch
 	// **/
 	// static function utf8.gmatch():Void;
-
 	// /**
 	// 	Returns a copy of the original input string with replaced matches from the pattern by the replacement value.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.gsub
 	// **/
 	// static function utf8.gsub():Void;
-
 	// /**
 	// 	Inserts a substring into input string. If insert-position is given, the substring will be inserted before the character at this index, otherwise the substring will concatenate to input. The insert position may be negative.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.insert
 	// **/
 	// static function utf8.insert():Void;
-
 	// /**
 	// 	Returns the length of the string passed.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.len
 	// **/
 	// static function utf8.len():Void;
-
 	// /**
 	// 	Converts a UTF-8 string to folded case (lowercase), which can be used to compare two strings. If input is an integer, it's treat as a codepoint and a convert codepoint (integer) is returned.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.lower
 	// **/
 	// static function utf8.lower():Void;
-
 	// /**
 	// 	Extract substrings by matching patterns in the input string. This function can be used to extract specific information from a string.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.match
 	// **/
 	// static function utf8.match():Void;
-
 	// /**
 	// 	Compares two strings in lower-case and returns the difference indicator (see table below) as an integer value.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.ncasecmp
 	// **/
 	// static function utf8.ncasecmp():Void;
-
 	// /**
 	// 	This is an iteration function to traverse each single codepoint of a UTF-8 string.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.next
 	// **/
 	// static function utf8.next():Void;
-
 	// /**
 	// 	This function removes a substring in a UTF-8 string by using a position range.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.remove
 	// **/
 	// static function utf8.remove():Void;
-
 	// /**
 	// 	Reverses the input string.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.reverse
 	// **/
 	// static function utf8.reverse():Void;
-
 	// /**
 	// 	Returns a substring of the string passed. The substring starts at i. If the third argument j is not given, the substring will end at the end of the string. If the third argument is given, the substring ends at and includes j.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.sub
 	// **/
 	// static function utf8.sub():Void;
-
 	// /**
 	// 	Converts a UTF-8 string to title case (uppercase). If input is an integer, it is treated as a codepoint and a converted codepoint (integer) is returned.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.title
 	// **/
 	// static function utf8.title():Void;
-
 	// /**
 	// 	Converts a UTF-8 string to title case (uppercase). If input is an integer, it is treated as a codepoint and a converted codepoint (integer) is returned.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.upper
 	// **/
 	// static function utf8.upper():Void;
-
 	// /**
 	// 	Calculates the width of UTF-8 strings with special/unprintable characters, which require special width treatment.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.width
 	// **/
 	// static function utf8.width():Void;
-
 	// /**
 	// 	Returns the location, offset and width of the character at the given location in the UTF-8 string.
-
 	// 	@see https://wiki.mtasa.com/wiki/Utf8.widthindex
 	// **/
 	// static function utf8.widthindex():Void;
@@ -3261,7 +3220,7 @@ Added server-side.Returns a single value representing the color.
 
 	/**
 		This function returns the current upgrade id on the specified vehicle's 'upgrade slot'
-An upgrade slot is a certain type of upgrade (eg: exhaust, spoiler), there are 17 slots (0 to 16).
+		An upgrade slot is a certain type of upgrade (eg: exhaust, spoiler), there are 17 slots (0 to 16).
 
 		@see https://wiki.mtasa.com/wiki/GetVehicleUpgradeOnSlot
 	**/
@@ -3541,8 +3500,8 @@ An upgrade slot is a certain type of upgrade (eg: exhaust, spoiler), there are 1
 	static function setVehicleOverrideLights():Void;
 
 	/**
-		This function changes the paintjob on the specified vehicle. 
-See paintjob for list of supported vehicles.Returns true if the vehicle's paintjob was changed. Otherwise false.
+		This function changes the paintjob on the specified vehicle.
+		See paintjob for list of supported vehicles.Returns true if the vehicle's paintjob was changed. Otherwise false.
 
 		@see https://wiki.mtasa.com/wiki/SetVehiclePaintjob
 	**/
@@ -4054,7 +4013,7 @@ See paintjob for list of supported vehicles.Returns true if the vehicle's paintj
 
 	/**
 		This function sets the game speed to the given value.Returns true if the gamespeed was set successfully, false otherwise.
-The normal game speed is '1'.
+		The normal game speed is '1'.
 
 		@see https://wiki.mtasa.com/wiki/SetGameSpeed
 	**/
@@ -4188,7 +4147,7 @@ The normal game speed is '1'.
 
 	/**
 		This function copies all contents of a certain node in a XML document to a new document file, so the copied node becomes the new file's root node.
-The new file will not be saved to file system until xmlSaveFile() is called
+		The new file will not be saved to file system until xmlSaveFile() is called
 
 		@see https://wiki.mtasa.com/wiki/XmlCopyFile
 	**/
@@ -4224,7 +4183,7 @@ The new file will not be saved to file system until xmlSaveFile() is called
 
 	/**
 		This function provides an alternative way to load XML files to getResourceConfig.
-This function loads an XML file and returns the node by specifying a specific file path, while getResourceConfig allows for loading an XML file from a resource.
+		This function loads an XML file and returns the node by specifying a specific file path, while getResourceConfig allows for loading an XML file from a resource.
 
 		@see https://wiki.mtasa.com/wiki/XmlLoadFile
 	**/
@@ -4307,5 +4266,5 @@ This function loads an XML file and returns the node by specifying a specific fi
 	**/
 	static function xmlUnloadFile():Void;
 
-// output here
+	// output here
 }

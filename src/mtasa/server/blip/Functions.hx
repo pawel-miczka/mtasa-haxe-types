@@ -4,7 +4,7 @@ import mtasa.shared.Element;
 
 @:native('_G')
 extern class Functions {
-  /**
+	/**
 		This function creates a blip element, which is displayed as an icon on the client's radar.
 
 		@param x The x position of the blip, in world coordinates,
@@ -22,7 +22,8 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/CreateBlip
 	**/
-	static function createBlip(x:Float, y:Float, z:Float, ?icon:Int, ?size:Int, ?r:Int, ?g:Int, ?b:Int, ?a:Int, ?ordering:Int, ?visibleDistance:Float, ?visibleTo:Element):Blip;
+	static function createBlip(x:Float, y:Float, z:Float, ?icon:Int, ?size:Int, ?r:Int, ?g:Int, ?b:Int, ?a:Int, ?ordering:Int, ?visibleDistance:Float,
+		?visibleTo:Element):Blip;
 
 	/**
 		This function creates a blip element, which is displayed as an icon on the client's radar.
@@ -43,16 +44,17 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/CreateBlip
 	**/
-	static function createBlipAttachedTo(elementToAttachTo:Element, ?icon:Int, ?size:Int, ?r:Int, ?g:Int, ?b:Int, ?a:Int, ?ordering:Int, ?visibleDistance:Float, ?visibleTo:Element):Blip;
+	static function createBlipAttachedTo(elementToAttachTo:Element, ?icon:Int, ?size:Int, ?r:Int, ?g:Int, ?b:Int, ?a:Int, ?ordering:Int,
+		?visibleDistance:Float, ?visibleTo:Element):Blip;
 
 	/**
 		This function will tell you what color a blip is. This color is only applicable to the default blip icon (,  or ). All other icons will ignore this.
 
 		@param theBlip The blip whose color you wish to get.
-		
+
 		@see https://wiki.mtasa.com/wiki/GetBlipColor
 	**/
-	//TODO: multiple return
+	// TODO: multiple return
 	static function getBlipColor(theBlip:Blip):Void;
 
 	/**
@@ -93,7 +95,7 @@ extern class Functions {
 
 	/**
 		This function will let you change the color of a blip. This color is only applicable to the default blip icon (,  or ). All other icons will ignore this.
-		
+
 		@param theBlip The blip who's color you wish to set.
 		@param red The amount of red in the blip's color (0 - 255).
 		@param green The amount of green in the blip's color (0 - 255).
@@ -128,7 +130,7 @@ extern class Functions {
 		This function sets the size of a blip's icon.
 
 		@param theBlip The blip you wish to get the size of.
-		@param iconSize The size you wish the icon to be. 2 is the default value. 25 is the maximum value. Value gets clamped between 0 and 25.		
+		@param iconSize The size you wish the icon to be. 2 is the default value. 25 is the maximum value. Value gets clamped between 0 and 25.
 
 		@see https://wiki.mtasa.com/wiki/SetBlipSize
 	**/

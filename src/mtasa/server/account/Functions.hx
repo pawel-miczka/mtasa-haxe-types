@@ -2,7 +2,7 @@ package mtasa.server.account;
 
 @:native("_G")
 extern class Functions {
-  /**
+	/**
 		This function adds an **account** to the list of registered accounts of the current server.
 
 		@param name The name of the account you wish to make, this normally is the player's name.
@@ -65,7 +65,7 @@ extern class Functions {
 	/**
 		This function returns the last serial that logged onto the specified account.
 
-		@param theAccount The account to get serial from		
+		@param theAccount The account to get serial from
 
 		@see https://wiki.mtasa.com/wiki/GetAccountSerial
 	**/

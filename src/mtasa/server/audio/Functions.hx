@@ -2,7 +2,7 @@ package mtasa.server.audio;
 
 @:native('_G')
 extern class Functions {
-  /**
+	/**
 		This function plays a frontend sound for the specified player.
 
 		@param thePlayer the player you want the sound to play for.

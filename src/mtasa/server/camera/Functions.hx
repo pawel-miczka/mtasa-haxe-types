@@ -4,7 +4,7 @@ import mtasa.shared.Element;
 
 @:native('_G')
 extern class Functions {
-  /**
+	/**
 		This function will fade a player's camera to a color or back to normal over a specified time period. This will also affect the sound volume for the player (50% faded = 50% volume, full fade = no sound). For clientside scripts you can perform 2 fade ins or fade outs in a row, but for serverside scripts you must use one then the other.
 
 		@see https://wiki.mtasa.com/wiki/FadeCamera
@@ -23,7 +23,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/GetCameraMatrix
 	**/
-	static function getCameraMatrix(thePlayer:Player):Void; //TODO: multireturn
+	static function getCameraMatrix(thePlayer:Player):Void; // TODO: multireturn
 
 	/**
 		This function returns an element that corresponds to the current target of the specified player's camera (i.e. what it is following).
@@ -44,7 +44,8 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/SetCameraMatrix
 	**/
-	static function setCameraMatrix(thePlayer:Player, positionX:Float, positionY:Float, positionZ:Float, ?lookAtX:Float, ?lookAtY:Float, ?lookAtZ:Float, ?roll:Float, ?fov:Float):Bool;
+	static function setCameraMatrix(thePlayer:Player, positionX:Float, positionY:Float, positionZ:Float, ?lookAtX:Float, ?lookAtY:Float, ?lookAtZ:Float,
+		?roll:Float, ?fov:Float):Bool;
 
 	/**
 		This function allows you to set a player's camera to follow other elements instead. Currently supported element type is:

@@ -4,7 +4,7 @@ import mtasa.server.classes.Ban;
 
 @:native('_G')
 extern class Functions {
-  /**
+	/**
 		This function will add a ban for the specified IP/username/serial to the server.
 
 		@see https://wiki.mtasa.com/wiki/AddBan
@@ -135,5 +135,6 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/RemoveBan
 	**/
-	static function removeBan(theBan:Ban, ?responsibleElement:Player):Bool; //TODO: add root as responsible element
+	static function removeBan(theBan:Ban, ?responsibleElement:Player):Bool; // TODO: add root as responsible element
+
 }
