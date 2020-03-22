@@ -32,7 +32,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/AddEventHandler
 	**/
-	static function addEventHandler(eventName:String, attachedTo:Element, handlerFunction:Function, ?propagate:Bool = true, ?priority:String = "normal"):Void;
+	static function addEventHandler(eventName:String, attachedTo:Element, handlerFunction:Function, ?propagate:Bool = true, ?priority:String = "normal"):Bool;
 
 	/**
 		Stops a latent event from completingReturns a true if the latent event was successfully cancelled, or false if it was not
