@@ -1,5 +1,6 @@
 package mtasa.server.marker;
 
+import mtasa.returns.Vector3Values;
 import mtasa.server.classes.Marker;
 import mtasa.shared.Element;
 
@@ -8,12 +9,6 @@ import mtasa.shared.Element;
   var green:Int;
   var blue:Int;
   var alpha:Int;
-}
-
-@:multiReturn extern class Vector3MultiReturn {
-  var x:Float;
-  var y:Float;
-  var z:Float;
 }
 
 @:native('_G')
@@ -58,7 +53,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/GetMarkerTarget
 	**/
-	static function getMarkerTarget(marker:Marker):Vector3MultiReturn;
+	static function getMarkerTarget(marker:Marker):Vector3Values;
 
 	/**
 		This function returns a marker's type.
