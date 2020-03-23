@@ -1,4 +1,4 @@
 package mtasa.server.classes;
 
-@:native('_G')
+@:native('Marker')
 extern class Marker {}

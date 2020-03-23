@@ -3,7 +3,7 @@
   "license": "MIT",
   "tags": ["mtasa", "gta", "lua"],
   "description": "Multi Theft Auto San Andreas variables and classes types",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "classPath": "src/",
   "releasenote": "Still WIP",
   "contributors": ["pawel-miczka"]
