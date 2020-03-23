@@ -168,48 +168,6 @@ extern class Functions {
 	static function httpWrite():Void;
 
 	/**
-		This function clears the chatbox. It does not clear the console (F8)Returns true if the player's chat was cleared successfully, false otherwise.
-
-		@see https://wiki.mtasa.com/wiki/ClearChatBox
-	**/
-	static function clearChatBox():Void;
-
-	/**
-		This outputs the specified text string to the chatbox. It can be specified as a message to certain player(s) or all players.
-
-		@see https://wiki.mtasa.com/wiki/OutputChatBox
-	**/
-	static function outputChatBox(text:String, ?visibleTo:Element, ?r:Int = 231, ?g:Int = 217, ?b:Int = 176, ?colorCoded:Bool = false):Bool;
-
-	/**
-		This outputs the specified text string to the console window (accessed with F8 or ~ key). It can be specified as a message to certain player(s) or all players.
-
-		@see https://wiki.mtasa.com/wiki/OutputConsole
-	**/
-	static function outputConsole():Void;
-
-	/**
-		This function outputs scripting debug messages, which can be read by enabling the debug textbox. The debug display level can then be set so that info or warning messages get filtered out.
-
-		@see https://wiki.mtasa.com/wiki/OutputDebugString
-	**/
-	static function outputDebugString():Void;
-
-	/**
-		This outputs a line of text to the server's log. This could be useful for debugging.
-
-		@see https://wiki.mtasa.com/wiki/OutputServerLog
-	**/
-	static function outputServerLog():Void;
-
-	/**
-		This function is used to show or hide the player's chat.Returns true if the player's chat was shown or hidden successfully, false otherwise.
-
-		@see https://wiki.mtasa.com/wiki/ShowChat
-	**/
-	static function showChat():Void;
-
-	/**
 		This function is used to set the current clothes on a ped.
 
 		@see https://wiki.mtasa.com/wiki/AddPedClothes
