@@ -168,27 +168,6 @@ extern class Functions {
 	static function httpWrite():Void;
 
 	/**
-		This function is intended to load data from a loaded XML file into the element tree. This could be used for loading an external map, or part of another map.
-
-		@see https://wiki.mtasa.com/wiki/LoadMapData
-	**/
-	static function loadMapData():Void;
-
-	/**
-		This function is used to reset the state of a player.  It is intended to restore a player to his default state as if he had just joined the server, without any scripts affecting him.
-
-		@see https://wiki.mtasa.com/wiki/ResetMapInfo
-	**/
-	static function resetMapInfo():Void;
-
-	/**
-		This converts a set of elements in the element tree into XML. This is a format that can then be loaded as a map file. Each element represents a single XML node.
-
-		@see https://wiki.mtasa.com/wiki/SaveMapData
-	**/
-	static function saveMapData():Void;
-
-	/**
 		This function creates a marker. A marker is a 3D model in the world that can highlight a particular point or area, often used to instruct players where to go to perform actions such as entering buildings.
 
 		@see https://wiki.mtasa.com/wiki/CreateMarker
