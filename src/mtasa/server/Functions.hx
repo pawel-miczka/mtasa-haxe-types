@@ -168,41 +168,6 @@ extern class Functions {
 	static function httpWrite():Void;
 
 	/**
-		Creates an object in the GTA world.
-
-		@see https://wiki.mtasa.com/wiki/CreateObject
-	**/
-	static function createObject():Void;
-
-	/**
-		This function returns the visible size of an object.
-
-		@see https://wiki.mtasa.com/wiki/GetObjectScale
-	**/
-	static function getObjectScale():Void;
-
-	/**
-		This function will smoothly move an object from its current position to a specified rotation and position.
-
-		@see https://wiki.mtasa.com/wiki/MoveObject
-	**/
-	static function moveObject():Void;
-
-	/**
-		This function changes the visible size of an object.
-
-		@see https://wiki.mtasa.com/wiki/SetObjectScale
-	**/
-	static function setObjectScale():Void;
-
-	/**
-		This will allow you to stop an object that is currently moving.
-
-		@see https://wiki.mtasa.com/wiki/StopObject
-	**/
-	static function stopObject():Void;
-
-	/**
 		This function clears the chatbox. It does not clear the console (F8)Returns true if the player's chat was cleared successfully, false otherwise.
 
 		@see https://wiki.mtasa.com/wiki/ClearChatBox
