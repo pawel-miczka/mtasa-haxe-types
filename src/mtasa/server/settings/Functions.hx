@@ -9,7 +9,6 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/Get
   **/
-  @:overload(function(settingName:String):lua.Table<String, String> {})
 	static function get(settingName:String):Dynamic;
 
 	/**
