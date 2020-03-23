@@ -1,0 +1,47 @@
+package mtasa.enums;
+
+@:enum abstract WeaponID(Int) {
+  var Fist = 0;
+  var Brassknuckle = 1;
+  var Golfclub = 2;
+  var Nightstick = 3;
+  var Knife = 4;
+  var Bat = 5;
+  var Shovel = 6;
+  var Poolstick = 7;
+  var Katana = 8;
+  var Chainsaw = 9;
+  var Colt45 = 22;
+  var Silenced = 23;
+  var Deagle = 24;
+  var Shotgun = 25;
+  var SawedOff = 26;
+  var CombatShotgun = 27;
+  var Uzi = 28;
+  var MP5 = 29;
+  var Tec_9 = 32;
+  var AK_47 = 30;
+  var M4 = 31;
+  var Rifle = 33;
+  var Sniper = 34;
+  var RocketLauncher = 35;
+  var RocketLauncher_HS = 36;
+  var Flamethrower = 37;
+  var Minigun = 38;
+  var Grenade = 16;
+  var Teargas = 17;
+  var Molotov = 18;
+  var Satchel = 39;
+  var Spraycan = 41;
+  var FireExtinguisher = 42;
+  var Camera = 43;
+  var Dildo = 10;
+  var Dildo2 = 11;
+  var Vibrator = 12;
+  var Flower = 14;
+  var Cane = 15;
+  var Nightvision = 44;
+  var Infrared = 45;
+  var Parachute = 46;
+  var SatchelDetonator = 40;
+}

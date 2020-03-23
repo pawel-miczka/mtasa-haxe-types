@@ -1,0 +1,43 @@
+package mtasa.enums;
+
+@:enum abstract PedWalkingStyle(Int) {
+  var MOVE_DEFAULT	= 0;
+  var MOVE_PLAYER	= 54;
+  var MOVE_PLAYER_F	= 55;
+  var MOVE_PLAYER_M	= 56;
+  var MOVE_ROCKET	= 57;
+  var MOVE_ROCKET_F	= 58;
+  var MOVE_ROCKET_M	= 59;
+  var MOVE_ARMED	= 60;
+  var MOVE_ARMED_F	= 61;
+  var MOVE_ARMED_M	= 62;
+  var MOVE_BBBAT	= 63;
+  var MOVE_BBBAT_F	= 64;
+  var MOVE_BBBAT_M	= 65;
+  var MOVE_CSAW	= 66;
+  var MOVE_CSAW_F	= 67;
+  var MOVE_CSAW_M	= 68;
+  var MOVE_SNEAK	= 69;
+  var MOVE_JETPACK	= 70;
+  var MOVE_MAN	= 118;
+  var MOVE_SHUFFLE	= 119;
+  var MOVE_OLDMAN	= 120;
+  var MOVE_GANG1	= 121;
+  var MOVE_GANG2	= 122;
+  var MOVE_OLDFATMAN	= 123;
+  var MOVE_FATMAN	= 124;
+  var MOVE_JOGGER	= 125;
+  var MOVE_DRUNKMAN	= 126;
+  var MOVE_BLINDMAN	= 127;
+  var MOVE_SWAT	= 128;
+  var MOVE_WOMAN	= 129;
+  var MOVE_SHOPPING	= 130;
+  var MOVE_BUSYWOMAN	= 131;
+  var MOVE_SEXYWOMAN	= 132;
+  var MOVE_PRO	= 133;
+  var MOVE_OLDWOMAN	= 134;
+  var MOVE_FATWOMAN	= 135;
+  var MOVE_JOGWOMAN	= 136;
+  var MOVE_OLDFATWOMAN	= 137;
+  var MOVE_SKATE	= 138;
+}
