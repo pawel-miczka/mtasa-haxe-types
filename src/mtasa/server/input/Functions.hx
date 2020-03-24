@@ -12,7 +12,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/AddCommandHandler
 	**/
-	static function addCommandHandler(commandName:String, handlerFunction:(player:Player, commandName:String, arguments:Rest<String>) -> Void, ?restricted:Bool = false, ?caseSensitive:Bool = true):Bool;
+	static function addCommandHandler(commandName:String, handlerFunction:Function, ?restricted:Bool = false, ?caseSensitive:Bool = true):Bool;
 
 	/**
 		Binds a player's key to a handler function or command, which will be called when the key is pressed.
