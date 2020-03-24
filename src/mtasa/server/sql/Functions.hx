@@ -1,13 +1,14 @@
 package mtasa.server.sql;
 
+import haxe.extern.EitherType;
 import mtasa.server.classes.QueryHandle;
 import mtasa.server.classes.DatabaseConnection;
 import haxe.extern.Rest;
 
 @:multiReturn extern class PollData {
-  var result:Array<Any>;
-  var affectedRows:Int;
-  var lastInsertedId:Int;
+  var result:EitherType<lua.Table<Int, Dynamic>, Bool>;
+  var affectedRows:EitherType<Int, String>;
+  var lastInsertedId:EitherType<Int, String>;
 }
 
 @:native('_G')
