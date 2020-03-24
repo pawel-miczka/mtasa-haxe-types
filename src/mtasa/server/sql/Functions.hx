@@ -4,6 +4,12 @@ import mtasa.server.classes.QueryHandle;
 import mtasa.server.classes.DatabaseConnection;
 import haxe.extern.Rest;
 
+@:multiReturn extern class PollData {
+  var result:lua.Table<Int, Dynamic>;
+  var affectedRows:Int;
+  var lastInsertedId:Int;
+}
+
 @:native('_G')
 extern class Functions {
 	/**
@@ -58,7 +64,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/DbPoll
 	**/
-	static function dbPoll(queryHandle:QueryHandle, timeout:Int, ?multipleResults:Bool):Array<Any>;
+	static function dbPoll(queryHandle:QueryHandle, timeout:Int, ?multipleResults:Bool):PollData;
 
 	/**
 		This function escapes arguments in the same way as dbQuery, except dbPrepareString returns the query string instead of processing the query. This allows you to safely build complex query strings from component parts and help prevent (one class of) SQL injection.
