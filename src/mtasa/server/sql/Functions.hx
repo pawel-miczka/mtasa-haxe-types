@@ -5,7 +5,7 @@ import mtasa.server.classes.DatabaseConnection;
 import haxe.extern.Rest;
 
 @:multiReturn extern class PollData {
-  var result:lua.Table<Int, Dynamic>;
+  var result:Array<Any>;
   var affectedRows:Int;
   var lastInsertedId:Int;
 }
