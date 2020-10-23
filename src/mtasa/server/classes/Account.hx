@@ -12,6 +12,19 @@ extern class Account {
 	var ip:String;
 
 	/**
+		This function returns an account for a specific user.
+
+		@param username The username of the account you want to retrieve
+		@param password The password for the account. If this argument is not specified, you can get the account whatever password it is, otherwise the password must match the account's.
+		@param caseSensitive Specifies whether to ignore the case when searching for an account.
+
+		@return Account or false if an account matching the username specified (and password, if specified) could not be found.
+
+		@see https://wiki.multitheftauto.com/wiki/GetAccount
+	**/
+	static function create(username:String, ?password:String, ?caseSensitive:Bool = true): Account;
+
+	/**
 		This function adds an account to the list of registered accounts of the current server.
 
 		@param name The name of the account you wish to make, this normally is the player's name.
