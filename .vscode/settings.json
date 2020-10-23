@@ -1,5 +1,0 @@
-{
-  "haxe.configurations": [
-    ["-cp", "src", "-lua", "dummy.lua"]
-  ]
-}
