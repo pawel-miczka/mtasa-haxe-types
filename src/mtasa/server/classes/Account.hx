@@ -1,5 +1,7 @@
 package mtasa.server.classes;
 
+import mtasa.server.classes.Player;
+
 @:native('Account')
 extern class Account {
 	var name:String;
