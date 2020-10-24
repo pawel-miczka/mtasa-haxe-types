@@ -7,7 +7,7 @@
     "lua"
   ],
   "description": "Multi Theft Auto San Andreas variables and classes types",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "classPath": "src/",
   "releasenote": "Still WIP",
   "contributors": [
