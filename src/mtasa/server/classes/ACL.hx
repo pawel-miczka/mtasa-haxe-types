@@ -15,8 +15,7 @@ extern class ACL {
 
 		@see https://wiki.multitheftauto.com/wiki/AclCreate
 	**/
-	@:native('create')
-	public function new(name:String);
+	static function create(name:String):ACL;
 
 	/**
 		This function destroys the ACL passed. The destroyed ACL will no longer be valid.
@@ -45,9 +44,9 @@ extern class ACL {
 
 		@see https://wiki.multitheftauto.com/wiki/AclGetName
 	**/
-  public function getName():String;
-  
-  /**
+	public function getName():String;
+
+	/**
 		This function returns whether the access for the given right is set to true or false in the ACL.
 
 		@param rightName The right name to return the access value of.
@@ -56,18 +55,18 @@ extern class ACL {
 
 		@see https://wiki.multitheftauto.com/wiki/AclGetRight
 	**/
-  public function getRight(rightName:String):Bool;
-  
-  /**
+	public function getRight(rightName:String):Bool;
+
+	/**
 		This function returns a list of all the ACLs.
 
 		@return Table of all the ACLs. This table can be empty if no ACLs exist. It can also return false/nil if it failed for some reason.
 
 		@see https://wiki.multitheftauto.com/wiki/AclList
 	**/
-  static function list():lua.Table<Int, ACL>;
-  
-  /**
+	static function list():lua.Table<Int, ACL>;
+
+	/**
 		This function returns a table of all the rights that a given ACL has.
 
 		@param allowedType The allowed right type. Possible values are general, function, resource and command
@@ -76,18 +75,18 @@ extern class ACL {
 
 		@see https://wiki.multitheftauto.com/wiki/AclListRights
 	**/
-  public function aclListRights(allowedType:String):lua.Table<Int, String>;
-  
-  /**
+	public function aclListRights(allowedType:String):lua.Table<Int, String>;
+
+	/**
 		This function reloads the ACL's and the ACL groups from the ACL XML file. All ACL and ACL group elements are invalid after a call to this and should not be used anymore.
 
 		@return True if the XML was successfully reloaded from the file, false or nil if the XML was invalid, didn't exist or could not be loaded for some other reason.
 
 		@see https://wiki.multitheftauto.com/wiki/AclReload
 	**/
-  static function reload():Bool;
-  
-  /**
+	static function reload():Bool;
+
+	/**
 		This function removes the given right (string) from the given ACL.
 
 		@param rightName The ACL name to remove from the right from
@@ -96,18 +95,18 @@ extern class ACL {
 
 		@see https://wiki.multitheftauto.com/wiki/AclRemoveRight
 	**/
-  public function removeRight(rightName:String):Bool;
-  
-  /**
+	public function removeRight(rightName:String):Bool;
+
+	/**
 		The ACL XML file is automatically saved whenever the ACL is modified, but the automatic save can be delayed by up to 10 seconds for performance reasons. Calling this function will force an immediate save.
 
 		@return True if the ACL was successfully changed, false or nil if it could not be saved for some reason, ie. file in use.
 
 		@see https://wiki.multitheftauto.com/wiki/AclSave
 	**/
-  static function save():Bool;
-  
-  /**
+	static function save():Bool;
+
+	/**
 		This functions changes or adds the given right in the given ACL. The access can be true or false and specifies whether the ACL gives access to the right or not.
 
 		@param rightName The right to add/change the access property of
@@ -117,11 +116,11 @@ extern class ACL {
 
 		@see https://wiki.multitheftauto.com/wiki/AclSetRight
 	**/
-  static function aclSetRight(rightName:String, hasAccess:Bool):Bool;
-  
-  /**
+	static function aclSetRight(rightName:String, hasAccess:Bool):Bool;
+
+	/**
 		This function returns whether or not the given object has access to perform the given action.
-		
+
 		@param object The object to test if has permission to. This can be a client element (ie. a player), a resource or a string in the form "user.<name>" or "resource.<name>".
 		@param action The action to test if the given object has access to. Ie. "function.kickPlayer".
 		@param defaultPermission The default permission if none is specified in either of the groups the given object is a member of. If this is left to true, the given object will have permissions to perform the action unless the opposite is explicitly specified in the ACL. If false, the action will be denied by default unless explicitly approved by the Access Control List.

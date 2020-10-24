@@ -26,9 +26,8 @@ extern class Ban {
 
 		@see https://wiki.multitheftauto.com/wiki/AddBan
 	**/
-	@:native('create')
-	public function new(?ip:String, ?username:String, ?serial:String, ?responsibleElement:EitherType<Player, RootElement> = null, ?reason:String = null,
-		?seconds:Int = 0);
+	static function create(?ip:String, ?username:String, ?serial:String, ?responsibleElement:EitherType<Player, RootElement> = null, ?reason:String = null,
+		?seconds:Int = 0):Ban;
 
 	/**
 		This function will return a table containing all the bans present in the server's banlist.xml.

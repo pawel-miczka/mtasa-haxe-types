@@ -14,8 +14,7 @@ extern class ACLGroup {
 
 		@see https://wiki.multitheftauto.com/wiki/AclCreateGroup
 	**/
-	@:native('create')
-	public function new(name:String);
+	static function create(name:String):ACLGroup;
 
 	/**
 		This function destroys the given ACL group. The destroyed ACL group will no longer be valid.
@@ -95,9 +94,9 @@ extern class ACLGroup {
 
 		@see https://wiki.multitheftauto.com/wiki/AclGroupListObjects
 	**/
-  public function listObjects():lua.Table<Int, String>;
-  
-  /**
+	public function listObjects():lua.Table<Int, String>;
+
+	/**
 		This function removes the given ACL from the given ACL group.
 
 		@param acl The ACL to remove from the given group
@@ -106,9 +105,9 @@ extern class ACLGroup {
 
 		@see https://wiki.multitheftauto.com/wiki/AclGroupRemoveACL
 	**/
-  public function removeACL(acl:ACL):Bool;
-  
-  /**
+	public function removeACL(acl:ACL):Bool;
+
+	/**
 		This function removes the given object from the given ACL group. The object can be a resource or a player.
 
 		@param objectName The object to remove from the ACL group
@@ -117,9 +116,9 @@ extern class ACLGroup {
 
 		@see https://wiki.multitheftauto.com/wiki/AclGroupRemoveObject
 	**/
-  static function removeObject(objectName:String):Bool;
-  
-  /**
+	static function removeObject(objectName:String):Bool;
+
+	/**
 		This function is used to determine if an object is in a group.
 
 		@param object the name of the object to check. Examples: "resource.ctf", "user.Jim".

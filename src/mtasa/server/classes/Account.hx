@@ -23,9 +23,8 @@ extern class Account {
 		@return Account or false if an account matching the username specified (and password, if specified) could not be found.
 
 		@see https://wiki.multitheftauto.com/wiki/GetAccount
-  **/
-  @:native('create')
-	public function new(username:String, ?password:String, ?caseSensitive:Bool = true);
+	**/
+	static function create(username:String, ?password:String, ?caseSensitive:Bool = true):Account;
 
 	/**
 		This function adds an account to the list of registered accounts of the current server.
