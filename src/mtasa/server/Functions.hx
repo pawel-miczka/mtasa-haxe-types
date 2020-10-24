@@ -663,7 +663,7 @@ extern class Functions {
 
 		@see https://wiki.multitheftauto.com/wiki/GetUnbanTime
 	**/
-	static function getUnbanTime():Void;
+	static function getUnbanTime():Int;
 
 	/**
 		This function checks whether the passed value is valid ban or not.
@@ -688,7 +688,7 @@ extern class Functions {
 		@see https://wiki.multitheftauto.com/wiki/KickPlayer
 	**/
 	@:overload(function(player:Player, ?reason:String):Bool {})
-	static function kickPlayer(player:Player, ?responsibleElement:EitherType<Player, String>, ?reason:String):Void;
+	static function kickPlayer(player:Player, ?responsibleElement:EitherType<Player, String>, ?reason:String):Bool;
 
 	/**
 		This function sets a new admin for a ban.
@@ -745,7 +745,7 @@ extern class Functions {
 
 		@see https://wiki.multitheftauto.com/wiki/ReloadBans
 	**/
-	static function reloadBans():Void;
+	static function reloadBans():Bool;
 
 	/**
 		This function will remove a specific ban.
