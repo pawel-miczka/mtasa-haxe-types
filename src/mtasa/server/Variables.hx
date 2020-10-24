@@ -6,5 +6,5 @@ typedef RootElement = Element;
 
 @:native('_G')
 extern class Variables {
-	var root:RootElement;
+	static var root:RootElement;
 }
