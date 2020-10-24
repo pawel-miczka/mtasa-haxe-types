@@ -156,4 +156,13 @@ extern class Ban {
 		@see https://wiki.multitheftauto.com/wiki/RemoveBan
 	**/
 	public function remove(?responsiblElement:EitherType<Player, RootElement> = null):Bool;
+
+	/**
+		This function will reload the server ban list file.
+
+		@return True if the ban list was reloaded successfully, false otherwise.
+
+		@see https://wiki.multitheftauto.com/wiki/ReloadBans
+	**/
+	static function reload():Bool;
 }
