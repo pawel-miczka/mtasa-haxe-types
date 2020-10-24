@@ -1,5 +1,8 @@
 package mtasa.server.classes;
 
+import mtasa.server.Variables.RootElement;
+import haxe.extern.EitherType;
+
 @:native('Player')
 extern class Player {
 	/**
