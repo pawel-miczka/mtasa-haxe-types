@@ -34,4 +34,15 @@ extern class Player {
 	**/
 	@:overload(function(?reason:String):Bool {})
 	public function kick(?responsibleElement:EitherType<Player, String>, ?reason:String):Bool;
+
+	/**
+		This function plays a frontend sound for the specified player.
+
+		@param sound a whole int specifying the sound id to play.
+
+		@return true if the sound was successfully played, false otherwise.
+
+		@see https://wiki.multitheftauto.com/wiki/PlaySoundFrontEnd
+	**/
+	public function playSoundFrontEnd(sound:Int):Bool;
 }
