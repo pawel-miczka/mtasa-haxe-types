@@ -798,7 +798,7 @@ extern class Functions {
 
 		@see https://wiki.multitheftauto.com/wiki/GetRuleValue
 	**/
-	static function getRuleValue():String;
+	static function getRuleValue(key:String):String;
 
 	/**
 		This function removes a set rule value that can be viewed by server browsers.
@@ -809,7 +809,7 @@ extern class Functions {
 
 		@see https://wiki.multitheftauto.com/wiki/RemoveRuleValue
 	**/
-	static function removeRuleValue():Bool;
+	static function removeRuleValue(key:String):Bool;
 
 	/**
 		This function sets a string containing a name for the game type. This should be the game-mode that is active, for example "Capture The Flag" or "Deathmatch".
@@ -820,7 +820,7 @@ extern class Functions {
 
 		@see https://wiki.multitheftauto.com/wiki/SetGameType
 	**/
-	static function setGameType():Bool;
+	static function setGameType(gameType:String):Bool;
 
 	/**
 		This function is used to set a map name that will be visible in the server browser. In practice you should generally rely on the mapmanager to do this for you.
@@ -831,7 +831,7 @@ extern class Functions {
 
 		@see https://wiki.multitheftauto.com/wiki/SetMapName
 	**/
-	static function setMapName():Bool;
+	static function setMapName(mapName:String):Bool;
 
 	/**
 		This function sets a rule value that can be viewed by server browsers.
