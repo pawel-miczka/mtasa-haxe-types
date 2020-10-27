@@ -136,6 +136,8 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/DxDrawCircle
 	**/
+	@:overload(function(position:Vector2, radius:Float, ?startAngle:Float = 0.0, ?stopAngle:Float = 360.0, ?color:Int = 0, ?centerColor:Int = 0,
+		?segments:Int = 32, ?ratio:Int = 1, postGUI:Bool = false):Bool {})
 	static function dxDrawCircle(posX:Float, posY:Float, radius:Float, ?startAngle:Float = 0.0, ?stopAngle:Float = 360.0, ?color:Int = 0,
 		?centerColor:Int = 0, ?segments:Int = 32, ?ratio:Int = 1, postGUI:Bool = false):Bool;
 
@@ -157,6 +159,8 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/DxDrawImage
 	**/
+	@:overload(function(position:Vector2, size:Vector2, image:EitherType<DxTexture, String>, ?rotation:Float = 0.0, ?rotationCenterOffsetX:Float = 0.0,
+		?rotationCenterOffsetY:Float = 0.0, ?color:Int = 1, ?postGUI:Bool = false):Bool {})
 	static function dxDrawImage(posX:Float, posY:Float, width:Float, height:Float, image:EitherType<DxTexture, String>, ?rotation:Float = 0.0,
 		?rotationCenterOffsetX:Float = 0.0, ?rotationCenterOffsetY:Float = 0.0, ?color:Int = 1, ?postGUI:Bool = false):Bool;
 
@@ -182,6 +186,8 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/DxDrawImageSection
 	**/
+	@:overload(function(position:Vector2, size:Vector2, u:Float, v:Float, usize:Float, vsize:Float, image:EitherType<DxTexture, String>,
+		?rotation:Float = 0.0, ?rotationCenterOffsetX:Float = 0.0, ?rotationCenterOffsetY:Float = 0.0, ?color:Int = 1, ?postGUI:Bool = false):Bool {})
 	static function dxDrawImageSection(posX:Float, posY:Float, width:Float, height:Float, u:Float, v:Float, usize:Float, vsize:Float,
 		image:EitherType<DxTexture, String>, ?rotation:Float = 0.0, ?rotationCenterOffsetX:Float = 0.0, ?rotationCenterOffsetY:Float = 0.0, ?color:Int = 1,
 		?postGUI:Bool = false):Bool;
@@ -201,6 +207,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/DxDrawLine
 	**/
+	@:overload(function(start:Vector2, end:Vector2, color:Int, ?width:Float = 1.0, ?postGUI:Bool = false):Bool {})
 	static function dxDrawLine(startX:Float, startY:Float, endX:Float, endY:Float, color:Int, ?width:Float = 1.0, ?postGUI:Bool = false):Bool;
 
 	/**
@@ -220,6 +227,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/DxDrawLine3D
 	**/
+	@:overload(function(start:Vector3, end:Vector3, ?color:Int = 1, ?width:Float, postGUI:Bool = false):Bool {})
 	static function dxDrawLine3D(startX:Float, startY:Float, startZ:Float, endX:Float, endY:Float, endZ:Float, ?color:Int = 1, ?width:Float,
 		postGUI:Bool = false):Bool;
 
@@ -243,6 +251,8 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/DxDrawMaterialLine3D
 	**/
+	@:overload(function(start:Vector3, end:Vector3, material:DxTexture, width:Float, ?color:Int = 1, ?postGUI:Bool = false, ?faceTowardX:Float = 0.0,
+		?faceTowardY:Float = 0.0, ?faceTowardZ:Float = 0.0):Bool {})
 	static function dxDrawMaterialLine3D(startX:Float, startY:Float, startZ:Float, endX:Float, endY:Float, endZ:Float, material:DxTexture, width:Float,
 		?color:Int = 1, ?postGUI:Bool = false, ?faceTowardX:Float = 0.0, ?faceTowardY:Float = 0.0, ?faceTowardZ:Float = 0.0):Bool;
 
@@ -325,6 +335,8 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/DxDrawMaterialSectionLine3D
 	**/
+	@:overload(function(start:Vector3, end:Vector3, u:Float, v:Float, usize:Float, vsize:Float, material:DxTexture, width:Float, ?color:Int = 1,
+		?postGUI:Bool = false, ?faceToward:Vector3):Bool {})
 	static function dxDrawMaterialSectionLine3D(startX:Float, startY:Float, startZ:Float, endX:Float, endY:Float, endZ:Float, u:Float, v:Float, usize:Float,
 		vsize:Float, material:DxTexture, width:Float, ?color:Int = 1, ?postGUI:Bool = false, ?faceTowardX:Float = 0.0, ?faceTowardY:Float = 0.0,
 		?faceTowardZ:Float = 0.0):Bool;
@@ -344,6 +356,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/DxDrawRectangle
 	**/
+	@:overload(function(start:Vector2, size:Vector2, ?color:Int = 1, ?postGUI:Bool = false, ?subPixelPositioning:Bool = false):Bool {})
 	static function dxDrawRectangle(startX:Float, startY:Float, width:Float, height:Float, ?color:Int = 1, ?postGUI:Bool = false,
 		?subPixelPositioning:Bool = false):Bool;
 
@@ -371,6 +384,9 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/DxDrawText
 	**/
+	@:overload(function(text:String, leftTopCorner:Vector2, ?rightBottomCorner:Vector2, ?color:Int = 1, ?scale:Float = 1.0,
+		?font:EitherType<DxFont, DxFontType>, ?alignX:String, ?alignY:String, ?clip:Bool = false, ?wordBreak:Bool = false, ?postGUI:Bool = false,
+		?colorCoded:Bool = false, ?subPixelPositioning:Bool = false, ?rotation:Float, ?rotationCenter:Vector2):Bool {})
 	static function dxDrawText(text:String, leftX:Float, topY:Float, ?rightX:Float, ?bottomY:Float, ?color:Int = 1, ?scale:Float = 1.0,
 		?font:EitherType<DxFont, DxFontType>, ?alignX:String, ?alignY:String, ?clip:Bool = false, ?wordBreak:Bool = false, ?postGUI:Bool = false,
 		?colorCoded:Bool = false, ?subPixelPositioning:Bool = false, ?rotation:Float, ?rotationCenterX:Float, ?rotationCenterY:Float):Bool;
@@ -390,6 +406,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/DxDrawText
 	**/
+	@:overload(function(position:Vector3, radius:Float, color:Int, lineWidth:Float, iterations:Int):Bool {})
 	static function dxDrawWiredSphere(x:Float, y:Float, z:Float, radius:Float, color:Int, lineWidth:Float, iterations:Int):Bool;
 
 	/**
