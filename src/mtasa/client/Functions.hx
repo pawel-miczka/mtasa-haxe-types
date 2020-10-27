@@ -1,5 +1,6 @@
 package mtasa.client;
 
+import haxe.Constraints.Function;
 import mtasa.client.classes.Element;
 import haxe.extern.EitherType;
 import haxe.extern.Rest;
@@ -698,6 +699,7 @@ extern class Functions {
 
 		@param eventName The name of the event you want to attach the handler function to.
 		@param attachedTo The element you wish to attach the handler to. The handler will only be called when the event it is attached to is triggered for this element, or one of its children.
+		@param handlerFunction The handler function you wish to call when the event is triggered. This function will be passed all of the event's parameters as arguments, but it isn't required that it takes all of them.
 		@param propagate A boolean representing whether the handler will be triggered if the event was propagated down or up the element tree (starting from the source), and not triggered directly on attachedTo
 		@param priority A string representing the trigger order priority relative to other event handlers of the same name.
 
@@ -705,5 +707,5 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/AddEventHandler
 	**/
-	static function addEventHandler(eventName:String, attachedTo:Element, ?propagate:Bool = true, ?priority:String = "normal"):Bool;
+	static function addEventHandler(eventName:String, attachedTo:Element, handlerFunction:Function, ?propagate:Bool = true, ?priority:String = "normal"):Bool;
 }
