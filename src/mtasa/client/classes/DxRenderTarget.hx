@@ -1,7 +1,7 @@
 package mtasa.client.classes;
 
 @:native('DxRenderTarget')
-extern class DxRenderTarget {
+extern class DxRenderTarget extends DxTexture {
 	/**
 		This function creates a render target element, which is a special type of texture that can be drawn on with the dx functions. Successful render target creation is not guaranteed, and may fail due to hardware or memory limitations.
 
