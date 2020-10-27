@@ -6,5 +6,6 @@ extern class Vector3 {
 	var y:Float;
 	var z:Float;
 
+	@:native('create')
 	public function new(x:Float, y:Float, z:Float);
 }
