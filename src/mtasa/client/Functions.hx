@@ -1,5 +1,6 @@
 package mtasa.client;
 
+import mtasa.client.classes.Element;
 import haxe.extern.EitherType;
 import haxe.extern.Rest;
 import mtasa.client.classes.DxFont;
@@ -674,4 +675,18 @@ extern class Functions {
 		@see https://wiki.mtasa.com/wiki/DxUpdateScreenSource
 	**/
 	static function dxUpdateScreenSource(screenSource:DxScreenSource, ?resampleNow:Bool = false):Bool;
+
+	/**
+		This function will add an event handler. An event handler is a function that will be called when the event it's attached to is triggered
+
+		@param eventName The name of the event you want to attach the handler function to.
+		@param attachedTo The element you wish to attach the handler to. The handler will only be called when the event it is attached to is triggered for this element, or one of its children.
+		@param propagate A boolean representing whether the handler will be triggered if the event was propagated down or up the element tree (starting from the source), and not triggered directly on attachedTo
+		@param priority A string representing the trigger order priority relative to other event handlers of the same name.
+
+		@return true if the event handler was attached successfully. Returns false if the specified event could not be found or any parameters were invalid.
+
+		@see https://wiki.mtasa.com/wiki/AddEventHandler
+	**/
+	static function addEventHandler(eventName:String, attachedTo:Element, ?propagate:Bool = true, ?priority:String = "normal"):Bool;
 }
