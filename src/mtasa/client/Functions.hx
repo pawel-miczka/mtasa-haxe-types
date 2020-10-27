@@ -66,6 +66,7 @@ extern class Functions {
 
 		@see https://wiki.mtasa.com/wiki/DxCreateRenderTarget
 	**/
+	@:overload(function(size:Vector2, ?withAlpha:Bool = false):DxRenderTarget {})
 	static function dxCreateRenderTarget(width:Int, height:Int, ?withAlpha:Bool = false):DxRenderTarget;
 
 	/**
