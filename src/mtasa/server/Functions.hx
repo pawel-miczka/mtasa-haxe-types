@@ -1,17 +1,11 @@
 package mtasa.server;
 
+import mtasa.server.classes.*;
 import mtasa.server.enums.RadarBlipIcon;
 import mtasa.server.returns.RGBAColor;
-import mtasa.server.classes.Blip;
 import mtasa.shared.classes.Vector3;
 import mtasa.server.Variables.RootElement;
 import haxe.extern.EitherType;
-import mtasa.server.classes.ACL;
-import mtasa.server.classes.ACLGroup;
-import mtasa.server.classes.Account;
-import mtasa.server.classes.Ban;
-import mtasa.server.classes.Element;
-import mtasa.server.classes.Player;
 
 @:native('_G')
 extern class Functions {
