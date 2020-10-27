@@ -4,4 +4,6 @@ package mtasa.shared.classes;
 extern class Vector2 {
 	var x:Float;
 	var y:Float;
+
+	public function new(x:Float, y:Float);
 }

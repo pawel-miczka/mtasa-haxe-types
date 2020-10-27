@@ -6,4 +6,6 @@ extern class Vector4 {
 	var y:Float;
 	var z:Float;
 	var w:Float;
+
+	public function new(x:Float, y:Float, z:Float, w:Float);
 }
