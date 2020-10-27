@@ -2,7 +2,6 @@ package mtasa.server;
 
 import mtasa.server.enums.RadarBlipIcon;
 import mtasa.server.returns.RGBAColor;
-import mtasa.shared.classes.Vector4;
 import mtasa.server.classes.Blip;
 import mtasa.shared.classes.Vector3;
 import mtasa.server.Variables.RootElement;
